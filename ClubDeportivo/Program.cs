@@ -12,7 +12,7 @@ namespace ClubDeportivo
         static void Main()
         {
             string envPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".env");
-            // El valor cambia dependiendo donde se ubique cada archivo .env en cada computadora local, se pone dentro "ruta de acceso completa" 
+            // El valor cambia dependiendo donde se ubique cada archivo .env en cada computadora local, se pone dentro de "" la ruta de acceso completa del archivo
 
             if (File.Exists(envPath))
             {
