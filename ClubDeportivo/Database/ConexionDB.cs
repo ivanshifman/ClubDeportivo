@@ -1,6 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Expr;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
+using static Org.BouncyCastle.Asn1.Cmp.Challenge;
 
 namespace ClubDeportivo.Database
 {
@@ -21,6 +24,10 @@ namespace ClubDeportivo.Database
             this.usuario = Environment.GetEnvironmentVariable("DB_USER") ?? "club_user";
             this.clave = Environment.GetEnvironmentVariable("DB_PASS") ?? "MiPass123";
             // Usuario o clave pueden sufrir modificaciones dependiendo los valores para uso local
+            //
+            // En este caso se uso el script SQL dentro de archivo UsuarioSistema.sql
+            // para la generación del usuario y clave
+
         }
 
         public MySqlConnection CrearConexionMySQL()

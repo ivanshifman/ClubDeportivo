@@ -396,6 +396,7 @@
   <ItemGroup>
     <Content Include="Database\SQL-Archivos\Creaciones.sql" />
     <Content Include="Database\SQL-Archivos\Inserciones.sql" />
+    <Content Include="Database\SQL-Archivos\UsuarioSistema.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
