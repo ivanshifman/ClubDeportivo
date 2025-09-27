@@ -20,6 +20,7 @@ namespace ClubDeportivo.Database
             this.puerto = Environment.GetEnvironmentVariable("DB_PORT") ?? "3306";
             this.usuario = Environment.GetEnvironmentVariable("DB_USER") ?? "club_user";
             this.clave = Environment.GetEnvironmentVariable("DB_PASS") ?? "MiPass123";
+            // Usuario o clave pueden sufrir modificaciones dependiendo los valores para uso local
         }
 
         public MySqlConnection CrearConexionMySQL()
