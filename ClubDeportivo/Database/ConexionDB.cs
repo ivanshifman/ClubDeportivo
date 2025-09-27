@@ -15,12 +15,11 @@ namespace ClubDeportivo.Database
 
         private ConexionDB()
         {
-            this.baseDatos = "club_deportivo";
-            this.servidor = "localhost";
-            this.puerto = "3306";
-            this.usuario = "root";
-            this.clave = "";
-            // La clave o usuario cambia dependiendo los datos de cada computadora en local.
+            this.baseDatos = Environment.GetEnvironmentVariable("DB_NAME") ?? "club_deportivo";
+            this.servidor = Environment.GetEnvironmentVariable("DB_SERVER") ?? "localhost";
+            this.puerto = Environment.GetEnvironmentVariable("DB_PORT") ?? "3306";
+            this.usuario = Environment.GetEnvironmentVariable("DB_USER") ?? "club_user";
+            this.clave = Environment.GetEnvironmentVariable("DB_PASS") ?? "MiPass123";
         }
 
         public MySqlConnection CrearConexionMySQL()
