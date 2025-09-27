@@ -1,0 +1,73 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
+
+namespace ClubDeportivo.Database
+{
+    internal class ConexionDB
+    {
+        private readonly string baseDatos;
+        private readonly string servidor;
+        private readonly string puerto;
+        private readonly string usuario;
+        private readonly string clave;
+        private static ConexionDB instancia = null;
+
+        private ConexionDB()
+        {
+            this.baseDatos = "club_deportivo";
+            this.servidor = "localhost";
+            this.puerto = "3306";
+            this.usuario = "root";
+            this.clave = "";
+            // La clave o usuario cambia dependiendo los datos de cada computadora en local.
+        }
+
+        public MySqlConnection CrearConexionMySQL()
+        {
+            try
+            {
+                var conexion = new MySqlConnection
+                {
+                    ConnectionString =
+                        $"datasource={this.servidor};" +
+                        $"port={this.puerto};" +
+                        $"username={this.usuario};" +
+                        $"password={this.clave};" +
+                        $"Database={this.baseDatos};"
+                };
+                return conexion;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(
+                    $"Error al conectar a la base de datos:\n{ex.Message}",
+                    "Error MySQL",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error general:\n{ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                throw;
+            }
+        }
+
+        public static ConexionDB GetInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new ConexionDB();
+            }
+            return instancia;
+        }
+    }
+}
+
