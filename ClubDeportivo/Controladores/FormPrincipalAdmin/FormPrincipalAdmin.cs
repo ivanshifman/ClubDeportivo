@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ClubDeportivo
+namespace ClubDeportivo.Controladores.FormPrincipalAdmin
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipalAdmin : Form
     {
-        public Form1()
+        public frmPrincipalAdmin()
         {
             InitializeComponent();
         }

@@ -46,14 +46,134 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.Designer.cs">
+      <DependentUpon>FormListadoCuotasVencidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormLogin\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormLogin\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormPagarActividad\FormPagarActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormPagarActividad\FormPagarActividad.Designer.cs">
+      <DependentUpon>FormPagarActividad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormPagarCuota\FormPagarCuota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormPagarCuota\FormPagarCuota.Designer.cs">
+      <DependentUpon>FormPagarCuota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormPreRegistro\FormPreRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormPreRegistro\FormPreRegistro.Designer.cs">
+      <DependentUpon>FormPreRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormPrincipalAdmin\FormPrincipalAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormPrincipalAdmin\FormPrincipalAdmin.Designer.cs">
+      <DependentUpon>FormPrincipalAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormPrincipalNoSocio\FormPrincipalNoSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormPrincipalNoSocio\FormPrincipalNoSocio.Designer.cs">
+      <DependentUpon>FormPrincipalNoSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormPrincipalSocio\FormPrincipalSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormPrincipalSocio\FormPrincipalSocio.Designer.cs">
+      <DependentUpon>FormPrincipalSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormRegistroNoSocio\FormRegistroNoSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormRegistroNoSocio\FormRegistroNoSocio.Designer.cs">
+      <DependentUpon>FormRegistroNoSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormRegistroSocio\FormRegistroSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormRegistroSocio\FormRegistroSocio.Designer.cs">
+      <DependentUpon>FormRegistroSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormVerActividades\FormVerActividades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormVerActividades\FormVerActividades.Designer.cs">
+      <DependentUpon>FormVerActividades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormVerCarnet\FormVerCarnet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormVerCarnet\FormVerCarnet.Designer.cs">
+      <DependentUpon>FormVerCarnet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormVerCuotas\FormVerCuotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormVerCuotas\FormVerCuotas.Designer.cs">
+      <DependentUpon>FormVerCuotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormVerUsuarios\FormVerUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormVerUsuarios\FormVerUsuarios.Designer.cs">
+      <DependentUpon>FormVerUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.resx">
+      <DependentUpon>FormListadoCuotasVencidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormLogin\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormPagarActividad\FormPagarActividad.resx">
+      <DependentUpon>FormPagarActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormPagarCuota\FormPagarCuota.resx">
+      <DependentUpon>FormPagarCuota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormPreRegistro\FormPreRegistro.resx">
+      <DependentUpon>FormPreRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormPrincipalAdmin\FormPrincipalAdmin.resx">
+      <DependentUpon>FormPrincipalAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormPrincipalNoSocio\FormPrincipalNoSocio.resx">
+      <DependentUpon>FormPrincipalNoSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormPrincipalSocio\FormPrincipalSocio.resx">
+      <DependentUpon>FormPrincipalSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormRegistroNoSocio\FormRegistroNoSocio.resx">
+      <DependentUpon>FormRegistroNoSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormRegistroSocio\FormRegistroSocio.resx">
+      <DependentUpon>FormRegistroSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormVerActividades\FormVerActividades.resx">
+      <DependentUpon>FormVerActividades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormVerCarnet\FormVerCarnet.resx">
+      <DependentUpon>FormVerCarnet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormVerCuotas\FormVerCuotas.resx">
+      <DependentUpon>FormVerCuotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormVerUsuarios\FormVerUsuarios.resx">
+      <DependentUpon>FormVerUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,5 +196,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\SQL-Archivos\Creaciones.sql" />
+    <Content Include="Database\SQL-Archivos\Inserciones.sql" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
