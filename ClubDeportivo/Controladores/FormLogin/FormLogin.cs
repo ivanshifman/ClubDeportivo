@@ -110,6 +110,12 @@ namespace ClubDeportivo.Controladores.FrmLogin
                 btnIngresar.PerformClick();
             }
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ClubDeportivo.Controladores.FormPreRegistro.frmPreRegistro().Show();
+        }
     }
 }
 

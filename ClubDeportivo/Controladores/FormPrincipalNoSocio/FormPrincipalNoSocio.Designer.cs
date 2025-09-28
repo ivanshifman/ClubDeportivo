@@ -56,6 +56,7 @@
             this.btnPagarActividad.TabIndex = 7;
             this.btnPagarActividad.Text = "Pagar Actividad";
             this.btnPagarActividad.UseVisualStyleBackColor = false;
+            this.btnPagarActividad.Click += new System.EventHandler(this.btnPagarActividad_Click);
             // 
             // btnCerrarNoSocio
             // 

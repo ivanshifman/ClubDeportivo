@@ -73,6 +73,7 @@
             this.btnPagarCuota.TabIndex = 2;
             this.btnPagarCuota.Text = "Pagar Cuota";
             this.btnPagarCuota.UseVisualStyleBackColor = false;
+            this.btnPagarCuota.Click += new System.EventHandler(this.btnPagarCuota_Click);
             // 
             // btnVerCarnet
             // 

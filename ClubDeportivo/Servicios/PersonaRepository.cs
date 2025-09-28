@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo.Database;
+using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
-    internal class PersonaRepository
+    public class PersonaRepository
     {
         public (int idPersona, string rol)? Ingresar(string usuario, string clave)
         {
@@ -43,6 +44,44 @@ namespace ClubDeportivo.Servicios
                         MessageBoxIcon.Warning
                     );
                     return null;
+                }
+            }
+        }
+
+        public int Registrar(Persona persona)
+        {
+            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            {
+                conn.Open();
+
+                string checkQuery = @"SELECT COUNT(*) FROM Persona 
+                              WHERE usuario = @usuario OR dni = @dni";
+                using (var checkCmd = new MySqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@usuario", persona.Usuario);
+                    checkCmd.Parameters.AddWithValue("@dni", persona.Dni);
+                    var count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        throw new Exception("Ya existe un usuario o DNI registrado con esos datos.");
+                    }
+                }
+
+                string query = @"INSERT INTO Persona (nombre, apellido, dni, fecha_nacimiento, usuario, clave)
+                                 VALUES (@nombre, @apellido, @dni, @fechaNacimiento, @usuario, @clave);
+                                 SELECT LAST_INSERT_ID();";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", persona.Nombre);
+                    cmd.Parameters.AddWithValue("@apellido", persona.Apellido);
+                    cmd.Parameters.AddWithValue("@dni", persona.Dni);
+                    cmd.Parameters.AddWithValue("@fechaNacimiento", persona.FechaNacimiento);
+                    cmd.Parameters.AddWithValue("@usuario", persona.Usuario);
+                    cmd.Parameters.AddWithValue("@clave", persona.Clave);
+
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }
