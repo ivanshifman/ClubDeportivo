@@ -30,7 +30,7 @@ namespace ClubDeportivo.Servicios
                         }
                         else
                         {
-                            return null; // usuario no encontrado
+                            return null;
                         }
                     }
                 }

@@ -6,6 +6,9 @@ namespace ClubDeportivo.Controladores.FrmLogin
 {
     public partial class frmLogin : Form
     {
+        private int intentosFallidos = 0;
+        private const int maxIntentos = 3;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -60,6 +63,7 @@ namespace ClubDeportivo.Controladores.FrmLogin
 
             if (resultado.HasValue)
             {
+                intentosFallidos = 0;
                 string rol = resultado.Value.rol;
 
                 this.Hide();
@@ -83,10 +87,17 @@ namespace ClubDeportivo.Controladores.FrmLogin
             }
             else
             {
-                MessageBox.Show("Usuario y/o contraseña incorrectos");
+                intentosFallidos++;
+                MessageBox.Show($"Credenciales incorrectas. Intento {intentosFallidos} de {maxIntentos}.");
                 txtUsuario.Clear();
                 txtPass.Clear();
                 txtUsuario.Focus();
+
+                if (intentosFallidos >= maxIntentos)
+                {
+                    MessageBox.Show("Demasiados intentos fallidos. La aplicación se cerrará.");
+                    Application.Exit();
+                }
             }
         }
 
@@ -95,6 +106,7 @@ namespace ClubDeportivo.Controladores.FrmLogin
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
+                e.Handled = true;
                 btnIngresar.PerformClick();
             }
         }
