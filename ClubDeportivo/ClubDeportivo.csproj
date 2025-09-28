@@ -239,6 +239,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Usuarios.cs" />
     <Compile Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.cs">
       <SubType>Form</SubType>
     </Compile>
