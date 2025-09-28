@@ -239,7 +239,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Usuarios.cs" />
+    <Compile Include="Modelos\Administrador.cs" />
+    <Compile Include="Modelos\NoSocio.cs" />
+    <Compile Include="Modelos\Persona.cs" />
+    <Compile Include="Modelos\Socio.cs" />
+    <Compile Include="Servicios\PersonaRepository.cs" />
     <Compile Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +401,7 @@
   <ItemGroup>
     <Content Include="Database\SQL-Archivos\Creaciones.sql" />
     <Content Include="Database\SQL-Archivos\Inserciones.sql" />
+    <Content Include="Database\SQL-Archivos\ProcedureLogin.sql" />
     <Content Include="Database\SQL-Archivos\UsuarioSistema.sql" />
   </ItemGroup>
   <ItemGroup />

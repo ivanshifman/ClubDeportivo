@@ -47,10 +47,10 @@
             this.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.2F, System.Drawing.FontStyle.Bold);
-            this.btnIngresar.Location = new System.Drawing.Point(506, 255);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIngresar.Location = new System.Drawing.Point(675, 314);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(98, 35);
+            this.btnIngresar.Size = new System.Drawing.Size(150, 43);
             this.btnIngresar.TabIndex = 0;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
@@ -60,8 +60,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Arial", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblUsuario.Location = new System.Drawing.Point(104, 124);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(139, 153);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(109, 29);
             this.lblUsuario.TabIndex = 2;
@@ -71,8 +70,7 @@
             // 
             this.txtTitulo.AutoSize = true;
             this.txtTitulo.Font = new System.Drawing.Font("Arial Black", 24.2F, System.Drawing.FontStyle.Bold);
-            this.txtTitulo.Location = new System.Drawing.Point(181, 42);
-            this.txtTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtTitulo.Location = new System.Drawing.Point(241, 52);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(355, 58);
             this.txtTitulo.TabIndex = 4;
@@ -84,18 +82,17 @@
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(214, 124);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuario.Location = new System.Drawing.Point(285, 153);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(314, 30);
+            this.txtUsuario.Size = new System.Drawing.Size(418, 30);
             this.txtUsuario.TabIndex = 5;
             // 
             // lblClave
             // 
             this.lblClave.AutoSize = true;
             this.lblClave.Font = new System.Drawing.Font("Arial", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblClave.Location = new System.Drawing.Point(104, 193);
-            this.lblClave.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblClave.Location = new System.Drawing.Point(139, 238);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(83, 29);
             this.lblClave.TabIndex = 7;
@@ -106,11 +103,12 @@
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPass.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(214, 194);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPass.Location = new System.Drawing.Point(285, 239);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(314, 30);
+            this.txtPass.Size = new System.Drawing.Size(418, 30);
             this.txtPass.TabIndex = 8;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // btnRegistrar
             // 
@@ -121,21 +119,21 @@
             this.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.2F, System.Drawing.FontStyle.Bold);
-            this.btnRegistrar.Location = new System.Drawing.Point(506, 306);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.Location = new System.Drawing.Point(675, 377);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(98, 36);
+            this.btnRegistrar.Size = new System.Drawing.Size(150, 44);
             this.btnRegistrar.TabIndex = 9;
             this.btnRegistrar.Text = "Registrarse";
             this.btnRegistrar.UseVisualStyleBackColor = false;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(642, 366);
+            this.ClientSize = new System.Drawing.Size(906, 450);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.lblClave);
@@ -143,9 +141,11 @@
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnIngresar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmLogin";
             this.Text = "Club Deportivo - Login";
+            this.Shown += new System.EventHandler(this.frmLogin_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

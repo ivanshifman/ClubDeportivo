@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClubDeportivo.Controladores.FrmLogin
@@ -15,38 +9,16 @@ namespace ClubDeportivo.Controladores.FrmLogin
         public frmLogin()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
-        {
-            if (ValidarCampos())
-            {
-                DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
-                Clases.Usuarios dato = new Clases.Usuarios(); // variable que contiene todas las caracteristicas de la clase
-                tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
-                if (tablaLogin.Rows.Count > 0)
-                {
-                    // quiere decir que el resultado tiene 1 fila por lo que el usuario EXISTE
-                    MessageBox.Show("Ingreso exitoso");
-                }
-                else
-                {
-                    MessageBox.Show("Usuario y/o password incorrecto");
-                }
-            }
-            else
-            {
-                return;
-            }
-        }
         private bool ValidarCampos()
         {
             bool esValido = true;
 
-            // Validar usuario
-            if (string.IsNullOrEmpty(txtUsuario.Text) || txtUsuario.Text == "USUARIO")
+            if (string.IsNullOrEmpty(txtUsuario.Text))
             {
-                txtUsuario.BackColor = Color.LightPink; // Resaltar error
+                txtUsuario.BackColor = Color.LightPink;
                 esValido = false;
             }
             else
@@ -54,8 +26,7 @@ namespace ClubDeportivo.Controladores.FrmLogin
                 txtUsuario.BackColor = Color.White;
             }
 
-            // Validar contraseña
-            if (string.IsNullOrEmpty(txtPass.Text) || txtPass.Text == "CONTRASEÑA")
+            if (string.IsNullOrEmpty(txtPass.Text))
             {
                 txtPass.BackColor = Color.LightPink;
                 esValido = false;
@@ -66,11 +37,67 @@ namespace ClubDeportivo.Controladores.FrmLogin
             }
 
             if (!esValido)
+            {
                 MessageBox.Show("Por favor complete todos los campos obligatorios");
-
+                txtUsuario.BackColor = Color.White;
+                txtPass.BackColor= Color.White;
+            }
+                
             return esValido;
         }
 
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new Action(() => txtUsuario.Focus()));
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos()) return;
+
+            var repo = new Servicios.PersonaRepository();
+            var resultado = repo.Ingresar(txtUsuario.Text.Trim(), txtPass.Text.Trim());
+
+            if (resultado.HasValue)
+            {
+                string rol = resultado.Value.rol;
+
+                this.Hide();
+
+                switch (rol.ToLower())
+                {
+                    case "administrador":
+                        new ClubDeportivo.Controladores.FormPrincipalAdmin.frmPrincipalAdmin().Show();
+                        break;
+                    case "socio":
+                        new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                        break;
+                    case "nosocio":
+                        new ClubDeportivo.Controladores.FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
+                        break;
+                    default:
+                        MessageBox.Show($"Rol desconocido: {rol}");
+                        this.Show();
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o contraseña incorrectos");
+                txtUsuario.Clear();
+                txtPass.Clear();
+                txtUsuario.Focus();
+            }
+        }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnIngresar.PerformClick();
+            }
+        }
     }
 }
 
