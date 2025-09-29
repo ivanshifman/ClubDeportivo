@@ -13,7 +13,6 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             InitializeComponent();
         }
 
-        // Evento del botón Registrar
         private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
         {
             try
