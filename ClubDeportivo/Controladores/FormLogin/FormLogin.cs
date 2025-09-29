@@ -15,39 +15,6 @@ namespace ClubDeportivo.Controladores.FrmLogin
             this.KeyPreview = true;
         }
 
-        private bool ValidarCampos()
-        {
-            bool esValido = true;
-
-            if (string.IsNullOrEmpty(txtUsuario.Text))
-            {
-                txtUsuario.BackColor = Color.LightPink;
-                esValido = false;
-            }
-            else
-            {
-                txtUsuario.BackColor = Color.White;
-            }
-
-            if (string.IsNullOrEmpty(txtPass.Text))
-            {
-                txtPass.BackColor = Color.LightPink;
-                esValido = false;
-            }
-            else
-            {
-                txtPass.BackColor = Color.White;
-            }
-
-            if (!esValido)
-            {
-                MessageBox.Show("Por favor complete todos los campos obligatorios");
-                txtUsuario.BackColor = Color.White;
-                txtPass.BackColor= Color.White;
-            }
-                
-            return esValido;
-        }
 
         private void frmLogin_Shown(object sender, EventArgs e)
         {
@@ -115,6 +82,40 @@ namespace ClubDeportivo.Controladores.FrmLogin
         {
             this.Hide();
             new ClubDeportivo.Controladores.FormPreRegistro.frmPreRegistro().Show();
+        }
+
+        private bool ValidarCampos()
+        {
+            bool esValido = true;
+
+            if (string.IsNullOrEmpty(txtUsuario.Text))
+            {
+                txtUsuario.BackColor = Color.LightPink;
+                esValido = false;
+            }
+            else
+            {
+                txtUsuario.BackColor = Color.White;
+            }
+
+            if (string.IsNullOrEmpty(txtPass.Text))
+            {
+                txtPass.BackColor = Color.LightPink;
+                esValido = false;
+            }
+            else
+            {
+                txtPass.BackColor = Color.White;
+            }
+
+            if (!esValido)
+            {
+                MessageBox.Show("Por favor complete todos los campos obligatorios");
+                txtUsuario.BackColor = Color.White;
+                txtPass.BackColor = Color.White;
+            }
+
+            return esValido;
         }
     }
 }

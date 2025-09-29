@@ -1,6 +1,7 @@
 ﻿using ClubDeportivo.Modelos;
 using ClubDeportivo.Repositories;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ClubDeportivo.Controladores.FormRegistroNoSocio
@@ -12,34 +13,19 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             InitializeComponent();
         }
 
+        // Evento del botón Registrar
         private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNombreNoSocio.Text) || txtNombreNoSocio.Text.Length > 100)
-                    throw new ArgumentException("El nombre no puede estar vacío ni superar los 100 caracteres.");
-
-                if (string.IsNullOrWhiteSpace(txtApellidoNoSocio.Text) || txtApellidoNoSocio.Text.Length > 100)
-                    throw new ArgumentException("El apellido no puede estar vacío ni superar los 100 caracteres.");
-
-                if (string.IsNullOrWhiteSpace(txtDniNoSocio.Text) || !System.Text.RegularExpressions.Regex.IsMatch(txtDniNoSocio.Text, @"^\d{7,8}$"))
-                    throw new ArgumentException("El DNI debe tener entre 7 y 8 dígitos numéricos.");
-
-                if (dtpNoSocio.Value > DateTime.Today)
-                    throw new ArgumentException("La fecha de nacimiento no puede ser futura.");
-
-                if (string.IsNullOrWhiteSpace(txtUsuarioNoSocio.Text) || txtUsuarioNoSocio.Text.Length > 50)
-                    throw new ArgumentException("El usuario no puede estar vacío ni superar los 50 caracteres.");
-
-                if (string.IsNullOrWhiteSpace(txtClaveNoSocio.Text) || txtClaveNoSocio.Text.Length < 6)
-                    throw new ArgumentException("La clave debe tener al menos 6 caracteres.");
+                ValidarCampos();
 
                 var noSocio = new NoSocio(
-                    txtNombreNoSocio.Text,
-                    txtApellidoNoSocio.Text,
-                    txtDniNoSocio.Text,
+                    txtNombreNoSocio.Text.Trim(),
+                    txtApellidoNoSocio.Text.Trim(),
+                    txtDniNoSocio.Text.Trim(),
                     dtpNoSocio.Value,
-                    txtUsuarioNoSocio.Text,
+                    txtUsuarioNoSocio.Text.Trim(),
                     txtClaveNoSocio.Text
                 );
 
@@ -51,22 +37,33 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(
-                    ex.Message,
-                    "Validación",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+                MessageBox.Show(ex.Message, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Error al registrar el no socio: {ex.Message}",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show($"Error al registrar el no socio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombreNoSocio.Text) || txtNombreNoSocio.Text.Length > 100)
+                throw new ArgumentException("El nombre no puede estar vacío ni superar los 100 caracteres.");
+
+            if (string.IsNullOrWhiteSpace(txtApellidoNoSocio.Text) || txtApellidoNoSocio.Text.Length > 100)
+                throw new ArgumentException("El apellido no puede estar vacío ni superar los 100 caracteres.");
+
+            if (string.IsNullOrWhiteSpace(txtDniNoSocio.Text) || !Regex.IsMatch(txtDniNoSocio.Text, @"^\d{7,8}$"))
+                throw new ArgumentException("El DNI debe tener entre 7 y 8 dígitos numéricos.");
+
+            if (dtpNoSocio.Value > DateTime.Today)
+                throw new ArgumentException("La fecha de nacimiento no puede ser futura.");
+
+            if (string.IsNullOrWhiteSpace(txtUsuarioNoSocio.Text) || txtUsuarioNoSocio.Text.Length > 50)
+                throw new ArgumentException("El usuario no puede estar vacío ni superar los 50 caracteres.");
+
+            if (string.IsNullOrWhiteSpace(txtClaveNoSocio.Text) || txtClaveNoSocio.Text.Length < 6)
+                throw new ArgumentException("La clave debe tener al menos 6 caracteres.");
         }
     }
 }
