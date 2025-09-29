@@ -7,25 +7,6 @@ namespace ClubDeportivo.Servicios
 {
     public class CuotaRepository
     {
-        private int? ObtenerIdSocioPorIdPersona(int idPersona)
-        {
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
-            {
-                conn.Open();
-                string q = "SELECT id_socio FROM Socio WHERE id_persona = @idPersona LIMIT 1";
-                using (var cmd = new MySqlCommand(q, conn))
-                {
-                    cmd.Parameters.AddWithValue("@idPersona", idPersona);
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            return reader.GetInt32("id_socio");
-                        return null;
-                    }
-                }
-            }
-        }
-
         public int RegistrarCuota(Cuota cuota)
         {
             if (cuota == null) throw new ArgumentNullException(nameof(cuota));
@@ -57,8 +38,7 @@ namespace ClubDeportivo.Servicios
 
         public bool TieneCuotaPagadaPorPersona(int idPersona)
         {
-            var idSocio = ObtenerIdSocioPorIdPersona(idPersona);
-            if (!idSocio.HasValue) return false;
+            var idSocio = new ClubDeportivo.Servicios.SocioRepository().ObtenerIdSocioPorIdPersona(idPersona);
 
             using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
             {
@@ -66,7 +46,7 @@ namespace ClubDeportivo.Servicios
                 string q = "SELECT COUNT(*) FROM Cuota WHERE id_socio = @idSocio";
                 using (var cmd = new MySqlCommand(q, conn))
                 {
-                    cmd.Parameters.AddWithValue("@idSocio", idSocio.Value);
+                    cmd.Parameters.AddWithValue("@idSocio", idSocio);
                     return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
                 }
             }
@@ -74,8 +54,7 @@ namespace ClubDeportivo.Servicios
 
         public bool TieneCuotaVigentePorPersona(int idPersona)
         {
-            var idSocio = ObtenerIdSocioPorIdPersona(idPersona);
-            if (!idSocio.HasValue) return false;
+            var idSocio = new ClubDeportivo.Servicios.SocioRepository().ObtenerIdSocioPorIdPersona(idPersona);
 
             using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
             {
@@ -84,7 +63,7 @@ namespace ClubDeportivo.Servicios
                              WHERE id_socio = @idSocio AND fechaVencimiento >= CURDATE()";
                 using (var cmd = new MySqlCommand(q, conn))
                 {
-                    cmd.Parameters.AddWithValue("@idSocio", idSocio.Value);
+                    cmd.Parameters.AddWithValue("@idSocio", idSocio);
                     return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
                 }
             }

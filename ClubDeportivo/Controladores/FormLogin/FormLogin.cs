@@ -15,7 +15,6 @@ namespace ClubDeportivo.Controladores.FrmLogin
             this.KeyPreview = true;
         }
 
-
         private void frmLogin_Shown(object sender, EventArgs e)
         {
             this.BeginInvoke(new Action(() => txtUsuario.Focus()));
@@ -31,69 +30,11 @@ namespace ClubDeportivo.Controladores.FrmLogin
             if (resultado.HasValue)
             {
                 intentosFallidos = 0;
-                string rol = resultado.Value.rol;
-
-                this.Hide();
-
-                switch (rol.ToLower())
-                {
-                    case "administrador":
-                        new ClubDeportivo.Controladores.FormPrincipalAdmin.frmPrincipalAdmin().Show();
-                        break;
-                    case "socio":
-                        var cuotaRepo = new ClubDeportivo.Servicios.CuotaRepository();
-
-                        bool tieneCuota = cuotaRepo.TieneCuotaPagadaPorPersona(resultado.Value.idPersona);
-                        bool vigente = cuotaRepo.TieneCuotaVigentePorPersona(resultado.Value.idPersona);
-
-                        if (!tieneCuota)
-                        {
-                            MessageBox.Show("Debe abonar la cuota inicial.");
-                            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(resultado.Value.idPersona);
-
-                            if (form.ShowDialog() == DialogResult.OK)
-                                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
-                            else
-                                this.Show();
-                        }
-                        else if (!vigente)
-                        {
-                            MessageBox.Show("Su cuota está vencida. Debe regularizar el pago.");
-                            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(resultado.Value.idPersona);
-
-                            if (form.ShowDialog() == DialogResult.OK)
-                                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
-                            else
-                                this.Show();
-                        }
-                        else
-                        {
-                            new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
-                        }
-                        break;
-
-                    case "nosocio":
-                        new ClubDeportivo.Controladores.FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
-                        break;
-                    default:
-                        MessageBox.Show($"Rol desconocido: {rol}");
-                        this.Show();
-                        break;
-                }
+                GestionarLoginPorRol(resultado.Value);
             }
             else
             {
-                intentosFallidos++;
-                MessageBox.Show($"Credenciales incorrectas. Intento {intentosFallidos} de {maxIntentos}.");
-                txtUsuario.Clear();
-                txtPass.Clear();
-                txtUsuario.Focus();
-
-                if (intentosFallidos >= maxIntentos)
-                {
-                    MessageBox.Show("Demasiados intentos fallidos. La aplicación se cerrará.");
-                    Application.Exit();
-                }
+                GestionarErrorLogin();
             }
         }
 
@@ -146,6 +87,78 @@ namespace ClubDeportivo.Controladores.FrmLogin
 
             return esValido;
         }
+
+        private void GestionarLoginPorRol((int idPersona, string rol) resultado)
+        {
+            var (idPersona, rol) = resultado;
+            this.Hide();
+
+            switch (rol.ToLower())
+            {
+                case "administrador":
+                    new ClubDeportivo.Controladores.FormPrincipalAdmin.frmPrincipalAdmin().Show();
+                    break;
+                case "socio":
+                    VerificarCuotaSocio(idPersona);
+                    break;
+                case "nosocio":
+                    new ClubDeportivo.Controladores.FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
+                    break;
+                default:
+                    MessageBox.Show($"Rol desconocido: {rol}");
+                    this.Show();
+                    break;
+            }
+        }
+
+        private void VerificarCuotaSocio(int idPersona)
+        {
+            var cuotaRepo = new ClubDeportivo.Servicios.CuotaRepository();
+
+            bool tieneCuota = cuotaRepo.TieneCuotaPagadaPorPersona(idPersona);
+            bool vigente = cuotaRepo.TieneCuotaVigentePorPersona(idPersona);
+
+            if (!tieneCuota)
+            {
+                MostrarFormularioPagarCuota(idPersona, "Debe abonar la cuota inicial.");
+            }
+            else if (!vigente)
+            {
+                MostrarFormularioPagarCuota(idPersona, "Su cuota está vencida. Debe regularizar el pago.");
+            }
+            else
+            {
+                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+            }
+        }
+
+        private void MostrarFormularioPagarCuota(int idPersona, string mensaje)
+        {
+            MessageBox.Show(mensaje);
+            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idPersona);
+
+            if (form.ShowDialog() == DialogResult.OK)
+                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+            else
+                this.Show();
+        }
+
+        private void GestionarErrorLogin()
+        {
+            intentosFallidos++;
+            MessageBox.Show($"Credenciales incorrectas. Intento {intentosFallidos} de {maxIntentos}.");
+            txtUsuario.Clear();
+            txtPass.Clear();
+            txtUsuario.Focus();
+
+            if (intentosFallidos >= maxIntentos)
+            {
+                MessageBox.Show("Demasiados intentos fallidos. La aplicación se cerrará.");
+                Application.Exit();
+            }
+        }
+
     }
 }
+
 
