@@ -1,9 +1,8 @@
 ﻿using ClubDeportivo.Database;
 using ClubDeportivo.Modelos;
-using ClubDeportivo.Servicios;
 using MySql.Data.MySqlClient;
 
-namespace ClubDeportivo.Repositories
+namespace ClubDeportivo.Servicios
 {
     public class NoSocioRepository : PersonaRepository
     {

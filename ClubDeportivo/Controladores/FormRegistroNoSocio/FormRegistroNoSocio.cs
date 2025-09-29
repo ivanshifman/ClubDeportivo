@@ -1,5 +1,4 @@
 ﻿using ClubDeportivo.Modelos;
-using ClubDeportivo.Repositories;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -28,7 +27,7 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
                     txtClaveNoSocio.Text
                 );
 
-                var repo = new NoSocioRepository();
+                var repo = new ClubDeportivo.Servicios.NoSocioRepository();
                 repo.Registrar(noSocio);
 
                 new FormPrincipalNoSocio.frmPrincipalNoSocio().Show();

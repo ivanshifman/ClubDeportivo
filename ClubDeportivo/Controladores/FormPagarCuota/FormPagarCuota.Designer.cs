@@ -109,9 +109,8 @@
             this.lblNombreCompletoSocio.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblNombreCompletoSocio.Location = new System.Drawing.Point(197, 116);
             this.lblNombreCompletoSocio.Name = "lblNombreCompletoSocio";
-            this.lblNombreCompletoSocio.Size = new System.Drawing.Size(419, 21);
+            this.lblNombreCompletoSocio.Size = new System.Drawing.Size(0, 21);
             this.lblNombreCompletoSocio.TabIndex = 7;
-            this.lblNombreCompletoSocio.Text = "FUTURO CAMPO DINAMICO SOCIO NOMBRE---";
             // 
             // lblDniCompletoSocio
             // 
@@ -119,9 +118,8 @@
             this.lblDniCompletoSocio.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblDniCompletoSocio.Location = new System.Drawing.Point(197, 175);
             this.lblDniCompletoSocio.Name = "lblDniCompletoSocio";
-            this.lblDniCompletoSocio.Size = new System.Drawing.Size(370, 21);
+            this.lblDniCompletoSocio.Size = new System.Drawing.Size(0, 21);
             this.lblDniCompletoSocio.TabIndex = 8;
-            this.lblDniCompletoSocio.Text = "FUTURO CAMPO DINAMICO SOCIO DNI---";
             // 
             // txtMontoCuota
             // 
@@ -141,8 +139,6 @@
             this.cmbMedioPagoCuota.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbMedioPagoCuota.Font = new System.Drawing.Font("Arial", 11F);
             this.cmbMedioPagoCuota.FormattingEnabled = true;
-            this.cmbMedioPagoCuota.Items.AddRange(new object[] {
-            "\"Efectivo\", \"Tarjeta\""});
             this.cmbMedioPagoCuota.Location = new System.Drawing.Point(201, 286);
             this.cmbMedioPagoCuota.Name = "cmbMedioPagoCuota";
             this.cmbMedioPagoCuota.Size = new System.Drawing.Size(209, 29);
@@ -154,8 +150,6 @@
             this.cmbPromocion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbPromocion.Font = new System.Drawing.Font("Arial", 11F);
             this.cmbPromocion.FormattingEnabled = true;
-            this.cmbPromocion.Items.AddRange(new object[] {
-            "\"0\", \"3\", \"6\""});
             this.cmbPromocion.Location = new System.Drawing.Point(201, 343);
             this.cmbPromocion.Name = "cmbPromocion";
             this.cmbPromocion.Size = new System.Drawing.Size(209, 29);
@@ -174,6 +168,7 @@
             this.btnPagarCuota.TabIndex = 15;
             this.btnPagarCuota.Text = "Pagar";
             this.btnPagarCuota.UseVisualStyleBackColor = false;
+            this.btnPagarCuota.Click += new System.EventHandler(this.btnPagarCuota_Click);
             // 
             // btnCancelarCuota
             // 
@@ -210,6 +205,7 @@
             this.Controls.Add(this.lblTituloVerCuotas);
             this.Name = "frmPagarCuota";
             this.Text = "Club Deportivo - Pagar Cuota Socio";
+            this.Load += new System.EventHandler(this.frmPagarCuota_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

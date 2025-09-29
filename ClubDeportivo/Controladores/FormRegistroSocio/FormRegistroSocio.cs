@@ -1,5 +1,4 @@
 ﻿using ClubDeportivo.Modelos;
-using ClubDeportivo.Repositories;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -31,10 +30,11 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
                     chkFichaMedicaSocio.Checked
                 );
 
-                var repo = new SocioRepository();
-                repo.Registrar(socio);
+                var repo = new ClubDeportivo.Servicios.SocioRepository();
+                int idPersona = repo.Registrar(socio);
+                int idSocio = repo.ObtenerIdSocioPorIdPersona(idPersona);
 
-                new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota().Show();
+                new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio).Show();
                 this.Hide();
             }
             catch (ArgumentException ex)

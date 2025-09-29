@@ -41,8 +41,37 @@ namespace ClubDeportivo.Controladores.FrmLogin
                         new ClubDeportivo.Controladores.FormPrincipalAdmin.frmPrincipalAdmin().Show();
                         break;
                     case "socio":
-                        new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                        var cuotaRepo = new ClubDeportivo.Servicios.CuotaRepository();
+
+                        bool tieneCuota = cuotaRepo.TieneCuotaPagadaPorPersona(resultado.Value.idPersona);
+                        bool vigente = cuotaRepo.TieneCuotaVigentePorPersona(resultado.Value.idPersona);
+
+                        if (!tieneCuota)
+                        {
+                            MessageBox.Show("Debe abonar la cuota inicial.");
+                            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(resultado.Value.idPersona);
+
+                            if (form.ShowDialog() == DialogResult.OK)
+                                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                            else
+                                this.Show();
+                        }
+                        else if (!vigente)
+                        {
+                            MessageBox.Show("Su cuota está vencida. Debe regularizar el pago.");
+                            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(resultado.Value.idPersona);
+
+                            if (form.ShowDialog() == DialogResult.OK)
+                                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                            else
+                                this.Show();
+                        }
+                        else
+                        {
+                            new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                        }
                         break;
+
                     case "nosocio":
                         new ClubDeportivo.Controladores.FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
                         break;
