@@ -1,6 +1,8 @@
 ﻿using ClubDeportivo.Database;
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
@@ -8,23 +10,37 @@ namespace ClubDeportivo.Servicios
     {
         public int Registrar(NoSocio noSocio)
         {
-            int idPersona = base.Registrar(noSocio);
-
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            try
             {
-                conn.Open();
-                string query = @"INSERT INTO NoSocio (id_persona)
-                                 VALUES (@idPersona)";
+                int idPersona = base.Registrar(noSocio);
 
-                using (var cmd = new MySqlCommand(query, conn))
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
-                    cmd.Parameters.AddWithValue("@idPersona", idPersona);
-                    cmd.ExecuteNonQuery();
-                }
-            }
+                    conn.Open();
+                    string query = @"INSERT INTO NoSocio (id_persona)
+                             VALUES (@idPersona)";
 
-            return idPersona;
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idPersona", idPersona);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return idPersona;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error de base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
+
     }
 }
 

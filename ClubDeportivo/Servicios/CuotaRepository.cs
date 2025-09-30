@@ -2,6 +2,7 @@
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
+using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
@@ -11,116 +12,152 @@ namespace ClubDeportivo.Servicios
         {
             if (cuota == null) throw new ArgumentNullException(nameof(cuota));
 
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            try
             {
-                conn.Open();
-                string query = @"INSERT INTO Cuota (id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion)
-                                 VALUES (@idSocio, @monto, @fechaPago, @fechaVencimiento, @medioPago, @promocion);
-                                 SELECT LAST_INSERT_ID();";
-                using (var cmd = new MySqlCommand(query, conn))
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
-                    cmd.Parameters.AddWithValue("@idSocio", cuota.IdSocio);
-                    cmd.Parameters.AddWithValue("@monto", cuota.Monto);
-                    cmd.Parameters.AddWithValue("@fechaPago", cuota.FechaPago);
-                    cmd.Parameters.AddWithValue("@fechaVencimiento", cuota.FechaVencimiento);
-                    cmd.Parameters.AddWithValue("@medioPago", cuota.MedioPago);
-                    cmd.Parameters.AddWithValue("@promocion", cuota.Promocion);
-                    return Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Open();
+                    string query = @"INSERT INTO Cuota (id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion)
+                             VALUES (@idSocio, @monto, @fechaPago, @fechaVencimiento, @medioPago, @promocion);
+                             SELECT LAST_INSERT_ID();";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idSocio", cuota.IdSocio);
+                        cmd.Parameters.AddWithValue("@monto", cuota.Monto);
+                        cmd.Parameters.AddWithValue("@fechaPago", cuota.FechaPago);
+                        cmd.Parameters.AddWithValue("@fechaVencimiento", cuota.FechaVencimiento);
+                        cmd.Parameters.AddWithValue("@medioPago", cuota.MedioPago);
+                        cmd.Parameters.AddWithValue("@promocion", cuota.Promocion);
+                        return Convert.ToInt32(cmd.ExecuteScalar());
+                    }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error de base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 
         public int RegistrarRenovacion(int idSocio, Cuota nuevaCuota)
         {
-            var ultima = ObtenerUltimaCuota(idSocio);
-
-            DateTime fechaVencimientoNueva;
-
-            if (ultima != null && ultima.FechaVencimiento >= DateTime.Today)
+            try
             {
-                fechaVencimientoNueva = ultima.FechaVencimiento.AddMonths(1);
+                var ultima = ObtenerUltimaCuota(idSocio);
+                DateTime fechaVencimientoNueva = (ultima != null && ultima.FechaVencimiento >= DateTime.Today)
+                                                 ? ultima.FechaVencimiento.AddMonths(1)
+                                                 : DateTime.Today.AddMonths(1);
+
+                nuevaCuota.IdSocio = idSocio;
+                nuevaCuota.FechaPago = DateTime.Today;
+                nuevaCuota.FechaVencimiento = fechaVencimientoNueva;
+
+                return RegistrarCuota(nuevaCuota);
             }
-            else
+            catch (Exception ex)
             {
-                fechaVencimientoNueva = DateTime.Today.AddMonths(1);
+                MessageBox.Show($"Error al registrar la renovación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
-
-            nuevaCuota.IdSocio = idSocio;
-            nuevaCuota.FechaPago = DateTime.Today;
-            nuevaCuota.FechaVencimiento = fechaVencimientoNueva;
-
-            return RegistrarCuota(nuevaCuota);
         }
 
-
         public bool TieneCuotaPagada(int idSocio)
-        {;
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+        {
+            try
             {
-                conn.Open();
-                string q = "SELECT COUNT(*) FROM Cuota WHERE id_socio = @idSocio";
-                using (var cmd = new MySqlCommand(q, conn))
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
-                    cmd.Parameters.AddWithValue("@idSocio", idSocio);
-                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                    conn.Open();
+                    string q = "SELECT COUNT(*) FROM Cuota WHERE id_socio = @idSocio";
+                    using (var cmd = new MySqlCommand(q, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idSocio", idSocio);
+                        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al verificar cuota pagada: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 
         public bool TieneCuotaVigente(int idSocio)
         {
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            try
             {
-                conn.Open();
-                string q = @"SELECT COUNT(*) FROM Cuota 
-                             WHERE id_socio = @idSocio AND fechaVencimiento >= CURDATE()";
-                using (var cmd = new MySqlCommand(q, conn))
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
-                    cmd.Parameters.AddWithValue("@idSocio", idSocio);
-                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                    conn.Open();
+                    string q = @"SELECT COUNT(*) FROM Cuota 
+                         WHERE id_socio = @idSocio AND fechaVencimiento >= CURDATE()";
+                    using (var cmd = new MySqlCommand(q, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idSocio", idSocio);
+                        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al verificar cuota vigente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 
         public Cuota ObtenerUltimaCuota(int idSocio)
         {
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            try
             {
-                conn.Open();
-                string query = @"SELECT id_cuota, id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion
-                         FROM Cuota
-                         WHERE id_socio = @idSocio
-                         ORDER BY fechaVencimiento DESC
-                         LIMIT 1";
-
-                using (var cmd = new MySqlCommand(query, conn))
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
-                    cmd.Parameters.AddWithValue("@idSocio", idSocio);
+                    conn.Open();
+                    string query = @"SELECT id_cuota, id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion
+                             FROM Cuota
+                             WHERE id_socio = @idSocio
+                             ORDER BY fechaVencimiento DESC
+                             LIMIT 1";
 
-                    using (var reader = cmd.ExecuteReader())
+                    using (var cmd = new MySqlCommand(query, conn))
                     {
-                        if (reader.Read())
+                        cmd.Parameters.AddWithValue("@idSocio", idSocio);
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            return new Cuota(
-                                reader.GetInt32("id_socio"),
-                                reader.GetDecimal("monto"),
-                                reader.GetDateTime("fechaPago"),
-                                reader.GetDateTime("fechaVencimiento"),
-                                reader.GetString("medioPago"),
-                                reader.GetString("promocion")
-                            )
+                            if (reader.Read())
                             {
-                                IdCuota = reader.GetInt32("id_cuota")
-                            };
-                        }
-                        else
-                        {
-                            return null;
+                                return new Cuota(
+                                    reader.GetInt32("id_socio"),
+                                    reader.GetDecimal("monto"),
+                                    reader.GetDateTime("fechaPago"),
+                                    reader.GetDateTime("fechaVencimiento"),
+                                    reader.GetString("medioPago"),
+                                    reader.GetString("promocion")
+                                )
+                                {
+                                    IdCuota = reader.GetInt32("id_cuota")
+                                };
+                            }
+                            else
+                            {
+                                return null;
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al obtener la última cuota: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
+
 
     }
 }
