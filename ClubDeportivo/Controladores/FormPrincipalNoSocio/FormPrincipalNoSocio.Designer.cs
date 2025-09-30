@@ -70,6 +70,7 @@
             this.btnCerrarNoSocio.TabIndex = 6;
             this.btnCerrarNoSocio.Text = "Cerrar Sesión";
             this.btnCerrarNoSocio.UseVisualStyleBackColor = false;
+            this.btnCerrarNoSocio.Click += new System.EventHandler(this.btnCerrarNoSocio_Click);
             // 
             // btnVerActividadesDisponibles
             // 

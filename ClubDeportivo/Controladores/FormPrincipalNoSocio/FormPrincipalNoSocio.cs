@@ -14,5 +14,11 @@ namespace ClubDeportivo.Controladores.FormPrincipalNoSocio
         {
 
         }
+
+        private void btnCerrarNoSocio_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+        }
     }
 }

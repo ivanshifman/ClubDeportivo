@@ -35,7 +35,19 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
                 int idSocio = repo.ObtenerIdSocioPorIdPersona(idPersona);
 
                 this.Close();
-                new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio).Show();
+                var formPagar = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio);
+                var result = formPagar.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio(idSocio).Show();
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                    new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+                }
             }
             catch (ArgumentException ex)
             {

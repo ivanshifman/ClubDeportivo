@@ -30,11 +30,28 @@ namespace ClubDeportivo.Servicios
             }
         }
 
-        public int RegistrarCuotaParaPersona(int idSocio, Cuota cuota)
+        public int RegistrarRenovacion(int idSocio, Cuota nuevaCuota)
         {
-            cuota.IdSocio = idSocio;
-            return RegistrarCuota(cuota);
+            var ultima = ObtenerUltimaCuota(idSocio);
+
+            DateTime fechaVencimientoNueva;
+
+            if (ultima != null && ultima.FechaVencimiento >= DateTime.Today)
+            {
+                fechaVencimientoNueva = ultima.FechaVencimiento.AddMonths(1);
+            }
+            else
+            {
+                fechaVencimientoNueva = DateTime.Today.AddMonths(1);
+            }
+
+            nuevaCuota.IdSocio = idSocio;
+            nuevaCuota.FechaPago = DateTime.Today;
+            nuevaCuota.FechaVencimiento = fechaVencimientoNueva;
+
+            return RegistrarCuota(nuevaCuota);
         }
+
 
         public bool TieneCuotaPagada(int idSocio)
         {;
@@ -64,6 +81,47 @@ namespace ClubDeportivo.Servicios
                 }
             }
         }
+
+        public Cuota ObtenerUltimaCuota(int idSocio)
+        {
+            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            {
+                conn.Open();
+                string query = @"SELECT id_cuota, id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion
+                         FROM Cuota
+                         WHERE id_socio = @idSocio
+                         ORDER BY fechaVencimiento DESC
+                         LIMIT 1";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idSocio", idSocio);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Cuota(
+                                reader.GetInt32("id_socio"),
+                                reader.GetDecimal("monto"),
+                                reader.GetDateTime("fechaPago"),
+                                reader.GetDateTime("fechaVencimiento"),
+                                reader.GetString("medioPago"),
+                                reader.GetString("promocion")
+                            )
+                            {
+                                IdCuota = reader.GetInt32("id_cuota")
+                            };
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
 

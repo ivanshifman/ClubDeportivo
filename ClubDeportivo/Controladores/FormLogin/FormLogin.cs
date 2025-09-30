@@ -131,20 +131,32 @@ namespace ClubDeportivo.Controladores.FrmLogin
             }
             else
             {
-                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio(idSocio).Show();
             }
         }
 
         private void MostrarFormularioPagarCuota(int idSocio, string mensaje)
         {
             MessageBox.Show(mensaje);
-            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio);
 
-            if (form.ShowDialog() == DialogResult.OK)
-                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
-            else
-                this.Show();
+            using (var formPagar = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio))
+            {
+                var result = formPagar.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio(idSocio).Show();
+                    this.Close();
+                }
+                else
+                {
+                    this.Show();
+                }
+            }
         }
+
+
+
 
         private void GestionarErrorLogin()
         {

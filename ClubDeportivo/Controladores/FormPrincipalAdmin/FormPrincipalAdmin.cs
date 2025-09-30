@@ -16,5 +16,11 @@ namespace ClubDeportivo.Controladores.FormPrincipalAdmin
         {
             InitializeComponent();
         }
+
+        private void btnCerrarAdmin_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+        }
     }
 }

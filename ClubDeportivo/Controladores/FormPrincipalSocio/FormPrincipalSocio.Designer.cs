@@ -60,6 +60,7 @@
             this.btnCerrarSocio.TabIndex = 1;
             this.btnCerrarSocio.Text = "Cerrar Sesión";
             this.btnCerrarSocio.UseVisualStyleBackColor = false;
+            this.btnCerrarSocio.Click += new System.EventHandler(this.btnCerrarSocio_Click);
             // 
             // btnPagarCuota
             // 

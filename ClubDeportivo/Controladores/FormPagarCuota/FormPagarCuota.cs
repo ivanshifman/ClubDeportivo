@@ -65,23 +65,11 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
                 if (!tieneInicial || !tieneVigente)
                 {
                     this.DialogResult = DialogResult.Cancel;
-                    this.Close();
-                    new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
                 }
-                else
-                {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                    new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
-                }
-            }
-            else
-            {
-                return;
+                this.Close();
             }
         }
-
-
+        
         private void InicializarCombos()
         {
             cmbMedioPagoCuota.Items.Clear();
@@ -151,12 +139,14 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
                 );
 
                 var repo = new ClubDeportivo.Servicios.CuotaRepository();
-                repo.RegistrarCuotaParaPersona(idSocio, cuota);
+                int filasAfectadas = repo.RegistrarRenovacion(idSocio, cuota);
 
-                MessageBox.Show("Cuota registrada con éxito.");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Cuota registrada con éxito.");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

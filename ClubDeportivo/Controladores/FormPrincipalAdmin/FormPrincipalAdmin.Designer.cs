@@ -69,6 +69,7 @@
             this.btnCerrarAdmin.TabIndex = 6;
             this.btnCerrarAdmin.Text = "Cerrar Sesión";
             this.btnCerrarAdmin.UseVisualStyleBackColor = false;
+            this.btnCerrarAdmin.Click += new System.EventHandler(this.btnCerrarAdmin_Click);
             // 
             // btnVerUsuarios
             // 
