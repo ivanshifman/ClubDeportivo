@@ -36,10 +36,8 @@ namespace ClubDeportivo.Servicios
             return RegistrarCuota(cuota);
         }
 
-        public bool TieneCuotaPagadaPorPersona(int idPersona)
-        {
-            var idSocio = new ClubDeportivo.Servicios.SocioRepository().ObtenerIdSocioPorIdPersona(idPersona);
-
+        public bool TieneCuotaPagada(int idSocio)
+        {;
             using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
             {
                 conn.Open();
@@ -52,10 +50,8 @@ namespace ClubDeportivo.Servicios
             }
         }
 
-        public bool TieneCuotaVigentePorPersona(int idPersona)
+        public bool TieneCuotaVigente(int idSocio)
         {
-            var idSocio = new ClubDeportivo.Servicios.SocioRepository().ObtenerIdSocioPorIdPersona(idPersona);
-
             using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
             {
                 conn.Open();

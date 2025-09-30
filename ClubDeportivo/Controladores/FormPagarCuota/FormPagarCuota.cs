@@ -18,6 +18,7 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
         {
             InicializarCombos();
             CargarDatosSocio();
+            AplicarReglasDePromocion();
         }
 
         private void cmbMedioPagoCuota_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,9 +33,54 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
 
         private void btnCancelarCuota_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            var socioRepo = new ClubDeportivo.Servicios.CuotaRepository();
+
+            bool tieneInicial = socioRepo.TieneCuotaPagada(idSocio);
+            bool tieneVigente = socioRepo.TieneCuotaVigente(idSocio);
+
+            string mensaje;
+
+            if (!tieneInicial)
+            {
+                mensaje = "El socio quedará registrado pero no podrá acceder al menú principal hasta abonar la cuota inicial.\n\n¿Desea continuar?";
+            }
+            else if (!tieneVigente)
+            {
+                mensaje = "Su cuota está vencida. No podrá acceder al menú principal hasta renovarla.\n\n¿Desea continuar?";
+            }
+            else
+            {
+                mensaje = "¿Está seguro de que desea cancelar?";
+            }
+
+            var result = MessageBox.Show(
+                mensaje,
+                "Confirmar cancelación",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.OK)
+            {
+                if (!tieneInicial || !tieneVigente)
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                    new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
+                }
+            }
+            else
+            {
+                return;
+            }
         }
+
 
         private void InicializarCombos()
         {
@@ -55,7 +101,6 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
 
             if (socio != null)
             {
-                MessageBox.Show($"Socio encontrado: {socio.Nombre} {socio.Apellido}");
                 lblNombreCompletoSocio.Text = $"{socio.Nombre} {socio.Apellido}";
                 lblDniCompletoSocio.Text = socio.Dni;
 
@@ -111,12 +156,14 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
                 MessageBox.Show("Cuota registrada con éxito.");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+                new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al registrar cuota: {ex.Message}");
             }
         }
+
     }
 }
 

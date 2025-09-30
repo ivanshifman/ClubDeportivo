@@ -183,6 +183,7 @@
             this.btnCancelarCuota.TabIndex = 16;
             this.btnCancelarCuota.Text = "Cancelar";
             this.btnCancelarCuota.UseVisualStyleBackColor = false;
+            this.btnCancelarCuota.Click += new System.EventHandler(this.btnCancelarCuota_Click);
             // 
             // frmPagarCuota
             // 

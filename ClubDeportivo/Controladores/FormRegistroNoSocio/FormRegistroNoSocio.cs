@@ -30,8 +30,8 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
                 var repo = new ClubDeportivo.Servicios.NoSocioRepository();
                 repo.Registrar(noSocio);
 
+                this.Close();
                 new FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
-                this.Hide();
             }
             catch (ArgumentException ex)
             {
@@ -41,6 +41,12 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             {
                 MessageBox.Show($"Error al registrar el no socio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCancelarNoSocio_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
         }
 
         private void ValidarCampos()
@@ -63,5 +69,6 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             if (string.IsNullOrWhiteSpace(txtClaveNoSocio.Text) || txtClaveNoSocio.Text.Length < 6)
                 throw new ArgumentException("La clave debe tener al menos 6 caracteres.");
         }
+
     }
 }

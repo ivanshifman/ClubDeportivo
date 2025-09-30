@@ -34,8 +34,8 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
                 int idPersona = repo.Registrar(socio);
                 int idSocio = repo.ObtenerIdSocioPorIdPersona(idPersona);
 
+                this.Close();
                 new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio).Show();
-                this.Hide();
             }
             catch (ArgumentException ex)
             {
@@ -45,6 +45,12 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
             {
                 MessageBox.Show($"Error al registrar el socio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCancelarSocio_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
         }
 
         private void ValidarCampos()
@@ -70,6 +76,8 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
             if (!chkFichaMedicaSocio.Checked)
                 throw new ArgumentException("Debe completar la ficha médica para poder registrarse.");
         }
+
+        
     }
 }
 

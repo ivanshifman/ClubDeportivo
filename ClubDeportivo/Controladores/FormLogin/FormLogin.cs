@@ -113,18 +113,21 @@ namespace ClubDeportivo.Controladores.FrmLogin
 
         private void VerificarCuotaSocio(int idPersona)
         {
+            var socioRepo = new ClubDeportivo.Servicios.SocioRepository();
+            int idSocio = socioRepo.ObtenerIdSocioPorIdPersona(idPersona);
+
             var cuotaRepo = new ClubDeportivo.Servicios.CuotaRepository();
 
-            bool tieneCuota = cuotaRepo.TieneCuotaPagadaPorPersona(idPersona);
-            bool vigente = cuotaRepo.TieneCuotaVigentePorPersona(idPersona);
+            bool tieneCuota = cuotaRepo.TieneCuotaPagada(idSocio);
+            bool vigente = cuotaRepo.TieneCuotaVigente(idSocio);
 
             if (!tieneCuota)
             {
-                MostrarFormularioPagarCuota(idPersona, "Debe abonar la cuota inicial.");
+                MostrarFormularioPagarCuota(idSocio, "Debe abonar la cuota inicial.");
             }
             else if (!vigente)
             {
-                MostrarFormularioPagarCuota(idPersona, "Su cuota está vencida. Debe regularizar el pago.");
+                MostrarFormularioPagarCuota(idSocio, "Su cuota está vencida. Debe regularizar el pago.");
             }
             else
             {
@@ -132,10 +135,10 @@ namespace ClubDeportivo.Controladores.FrmLogin
             }
         }
 
-        private void MostrarFormularioPagarCuota(int idPersona, string mensaje)
+        private void MostrarFormularioPagarCuota(int idSocio, string mensaje)
         {
             MessageBox.Show(mensaje);
-            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idPersona);
+            var form = new ClubDeportivo.Controladores.FormPagarCuota.frmPagarCuota(idSocio);
 
             if (form.ShowDialog() == DialogResult.OK)
                 new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio().Show();

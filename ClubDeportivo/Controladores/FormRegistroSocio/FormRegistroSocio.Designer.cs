@@ -106,7 +106,7 @@
             // 
             this.dtpSocio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSocio.Location = new System.Drawing.Point(257, 266);
-            this.dtpSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpSocio.Margin = new System.Windows.Forms.Padding(4);
             this.dtpSocio.MaxDate = new System.DateTime(2025, 9, 26, 0, 0, 0, 0);
             this.dtpSocio.Name = "dtpSocio";
             this.dtpSocio.Size = new System.Drawing.Size(307, 30);
@@ -118,7 +118,7 @@
             this.chkFichaMedicaSocio.AutoSize = true;
             this.chkFichaMedicaSocio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFichaMedicaSocio.Location = new System.Drawing.Point(257, 432);
-            this.chkFichaMedicaSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkFichaMedicaSocio.Margin = new System.Windows.Forms.Padding(4);
             this.chkFichaMedicaSocio.Name = "chkFichaMedicaSocio";
             this.chkFichaMedicaSocio.Size = new System.Drawing.Size(149, 27);
             this.chkFichaMedicaSocio.TabIndex = 6;
@@ -209,7 +209,7 @@
             this.btnRegistrarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarSocio.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarSocio.Location = new System.Drawing.Point(719, 310);
-            this.btnRegistrarSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistrarSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarSocio.Name = "btnRegistrarSocio";
             this.btnRegistrarSocio.Size = new System.Drawing.Size(165, 47);
             this.btnRegistrarSocio.TabIndex = 14;
@@ -224,12 +224,13 @@
             this.btnCancelarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelarSocio.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarSocio.Location = new System.Drawing.Point(719, 390);
-            this.btnCancelarSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarSocio.Name = "btnCancelarSocio";
             this.btnCancelarSocio.Size = new System.Drawing.Size(165, 47);
             this.btnCancelarSocio.TabIndex = 15;
             this.btnCancelarSocio.Text = "Cancelar";
             this.btnCancelarSocio.UseVisualStyleBackColor = false;
+            this.btnCancelarSocio.Click += new System.EventHandler(this.btnCancelarSocio_Click);
             // 
             // frmRegistroSocio
             // 

@@ -52,12 +52,13 @@
             this.btnCancelarNoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelarNoSocio.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarNoSocio.Location = new System.Drawing.Point(723, 390);
-            this.btnCancelarNoSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarNoSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarNoSocio.Name = "btnCancelarNoSocio";
             this.btnCancelarNoSocio.Size = new System.Drawing.Size(165, 47);
             this.btnCancelarNoSocio.TabIndex = 31;
             this.btnCancelarNoSocio.Text = "Cancelar";
             this.btnCancelarNoSocio.UseVisualStyleBackColor = false;
+            this.btnCancelarNoSocio.Click += new System.EventHandler(this.btnCancelarNoSocio_Click);
             // 
             // btnRegistrarNoSocio
             // 
@@ -66,7 +67,7 @@
             this.btnRegistrarNoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarNoSocio.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarNoSocio.Location = new System.Drawing.Point(723, 310);
-            this.btnRegistrarNoSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistrarNoSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
             this.btnRegistrarNoSocio.Size = new System.Drawing.Size(165, 47);
             this.btnRegistrarNoSocio.TabIndex = 30;
@@ -155,7 +156,7 @@
             // 
             this.dtpNoSocio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNoSocio.Location = new System.Drawing.Point(261, 266);
-            this.dtpNoSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpNoSocio.Margin = new System.Windows.Forms.Padding(4);
             this.dtpNoSocio.MaxDate = new System.DateTime(2025, 9, 26, 0, 0, 0, 0);
             this.dtpNoSocio.Name = "dtpNoSocio";
             this.dtpNoSocio.Size = new System.Drawing.Size(307, 30);
@@ -239,7 +240,7 @@
             this.Controls.Add(this.txtDniNoSocio);
             this.Controls.Add(this.txtApellidoNoSocio);
             this.Controls.Add(this.txtNombreNoSocio);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRegistroNoSocio";
             this.Text = "Club Deportivo - Registro No Socio";
             this.ResumeLayout(false);
