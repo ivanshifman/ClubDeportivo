@@ -89,7 +89,10 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
                 throw new ArgumentException("Debe completar la ficha médica para poder registrarse.");
         }
 
-        
+        private void lblFechaNacimientoSocio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
