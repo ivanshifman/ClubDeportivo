@@ -2,6 +2,7 @@
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
@@ -111,6 +112,45 @@ namespace ClubDeportivo.Servicios
             }
         }
 
+        public DataTable ObtenerCuotasPorSocio(int idSocio)
+        {
+            var tabla = new DataTable();
+
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    string query = @"
+                SELECT fechaPago, fechaVencimiento, monto, medioPago, promocion
+                FROM Cuota
+                WHERE id_socio = @idSocio
+                ORDER BY fechaPago DESC";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idSocio", idSocio);
+
+                        conn.Open();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            tabla.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return tabla;
+        }
+
+
         public Cuota ObtenerUltimaCuota(int idSocio)
         {
             try
@@ -157,6 +197,46 @@ namespace ClubDeportivo.Servicios
                 throw;
             }
         }
+
+        public DataTable ObtenerCuotasVencidas()
+        {
+            var tabla = new DataTable();
+
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    string query = @"
+                SELECT p.nombre, p.apellido, p.dni,
+                       c.fechaPago, c.fechaVencimiento, c.monto,
+                       c.medioPago, c.promocion
+                FROM Cuota c
+                INNER JOIN Socio s ON c.id_socio = s.id_socio
+                INNER JOIN Persona p ON s.id_persona = p.id_persona
+                WHERE c.fechaVencimiento < CURDATE()";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        conn.Open();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            tabla.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return tabla;
+        }
+
 
 
     }

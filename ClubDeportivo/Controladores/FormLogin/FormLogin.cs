@@ -155,9 +155,6 @@ namespace ClubDeportivo.Controladores.FrmLogin
             }
         }
 
-
-
-
         private void GestionarErrorLogin()
         {
             intentosFallidos++;

@@ -31,10 +31,6 @@
             this.lblTituloVerSocios = new System.Windows.Forms.Label();
             this.lblTituloVerNoSocios = new System.Windows.Forms.Label();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
-            this.dgvNoSocios = new System.Windows.Forms.DataGridView();
-            this.NombreNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaNacimientoNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApellidoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNISocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +38,10 @@
             this.FichaMedicaSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaAltaSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsuarioSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvNoSocios = new System.Windows.Forms.DataGridView();
+            this.NombreNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimientoNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsuarioNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVolverUsuarios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -90,47 +90,6 @@
             this.dgvSocios.RowTemplate.Height = 24;
             this.dgvSocios.Size = new System.Drawing.Size(774, 167);
             this.dgvSocios.TabIndex = 3;
-            // 
-            // dgvNoSocios
-            // 
-            this.dgvNoSocios.AllowUserToAddRows = false;
-            this.dgvNoSocios.AllowUserToDeleteRows = false;
-            this.dgvNoSocios.AllowUserToOrderColumns = true;
-            this.dgvNoSocios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNoSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNoSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NombreNoSocio,
-            this.ApellidoNoSocio,
-            this.FechaNacimientoNoSocio,
-            this.UsuarioNoSocio});
-            this.dgvNoSocios.Location = new System.Drawing.Point(59, 351);
-            this.dgvNoSocios.Name = "dgvNoSocios";
-            this.dgvNoSocios.ReadOnly = true;
-            this.dgvNoSocios.RowHeadersWidth = 51;
-            this.dgvNoSocios.RowTemplate.Height = 24;
-            this.dgvNoSocios.Size = new System.Drawing.Size(774, 160);
-            this.dgvNoSocios.TabIndex = 4;
-            // 
-            // NombreNoSocio
-            // 
-            this.NombreNoSocio.HeaderText = "Nombre";
-            this.NombreNoSocio.MinimumWidth = 6;
-            this.NombreNoSocio.Name = "NombreNoSocio";
-            this.NombreNoSocio.ReadOnly = true;
-            // 
-            // ApellidoNoSocio
-            // 
-            this.ApellidoNoSocio.HeaderText = "Apellido";
-            this.ApellidoNoSocio.MinimumWidth = 6;
-            this.ApellidoNoSocio.Name = "ApellidoNoSocio";
-            this.ApellidoNoSocio.ReadOnly = true;
-            // 
-            // FechaNacimientoNoSocio
-            // 
-            this.FechaNacimientoNoSocio.HeaderText = "Fecha de nacimiento";
-            this.FechaNacimientoNoSocio.MinimumWidth = 6;
-            this.FechaNacimientoNoSocio.Name = "FechaNacimientoNoSocio";
-            this.FechaNacimientoNoSocio.ReadOnly = true;
             // 
             // NombreSocio
             // 
@@ -181,6 +140,47 @@
             this.UsuarioSocio.Name = "UsuarioSocio";
             this.UsuarioSocio.ReadOnly = true;
             // 
+            // dgvNoSocios
+            // 
+            this.dgvNoSocios.AllowUserToAddRows = false;
+            this.dgvNoSocios.AllowUserToDeleteRows = false;
+            this.dgvNoSocios.AllowUserToOrderColumns = true;
+            this.dgvNoSocios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNoSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNoSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NombreNoSocio,
+            this.ApellidoNoSocio,
+            this.FechaNacimientoNoSocio,
+            this.UsuarioNoSocio});
+            this.dgvNoSocios.Location = new System.Drawing.Point(59, 351);
+            this.dgvNoSocios.Name = "dgvNoSocios";
+            this.dgvNoSocios.ReadOnly = true;
+            this.dgvNoSocios.RowHeadersWidth = 51;
+            this.dgvNoSocios.RowTemplate.Height = 24;
+            this.dgvNoSocios.Size = new System.Drawing.Size(774, 160);
+            this.dgvNoSocios.TabIndex = 4;
+            // 
+            // NombreNoSocio
+            // 
+            this.NombreNoSocio.HeaderText = "Nombre";
+            this.NombreNoSocio.MinimumWidth = 6;
+            this.NombreNoSocio.Name = "NombreNoSocio";
+            this.NombreNoSocio.ReadOnly = true;
+            // 
+            // ApellidoNoSocio
+            // 
+            this.ApellidoNoSocio.HeaderText = "Apellido";
+            this.ApellidoNoSocio.MinimumWidth = 6;
+            this.ApellidoNoSocio.Name = "ApellidoNoSocio";
+            this.ApellidoNoSocio.ReadOnly = true;
+            // 
+            // FechaNacimientoNoSocio
+            // 
+            this.FechaNacimientoNoSocio.HeaderText = "Fecha de nacimiento";
+            this.FechaNacimientoNoSocio.MinimumWidth = 6;
+            this.FechaNacimientoNoSocio.Name = "FechaNacimientoNoSocio";
+            this.FechaNacimientoNoSocio.ReadOnly = true;
+            // 
             // UsuarioNoSocio
             // 
             this.UsuarioNoSocio.HeaderText = "Usuario";
@@ -204,6 +204,7 @@
             this.btnVolverUsuarios.TabIndex = 21;
             this.btnVolverUsuarios.Text = "Volver";
             this.btnVolverUsuarios.UseVisualStyleBackColor = false;
+            this.btnVolverUsuarios.Click += new System.EventHandler(this.btnVolverUsuarios_Click);
             // 
             // frmVerUsuarios
             // 
@@ -218,6 +219,7 @@
             this.Controls.Add(this.lblTituloVerSocios);
             this.Name = "frmVerUsuarios";
             this.Text = "Club Deportivo - Ver Usuarios (Administrador)";
+            this.Load += new System.EventHandler(this.frmVerUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNoSocios)).EndInit();
             this.ResumeLayout(false);

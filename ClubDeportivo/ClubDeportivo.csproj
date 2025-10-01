@@ -244,6 +244,7 @@
     <Compile Include="Modelos\NoSocio.cs" />
     <Compile Include="Modelos\Persona.cs" />
     <Compile Include="Modelos\Socio.cs" />
+    <Compile Include="Servicios\AdministradorRepository.cs" />
     <Compile Include="Servicios\CuotaRepository.cs" />
     <Compile Include="Servicios\NoSocioRepository.cs" />
     <Compile Include="Servicios\PersonaRepository.cs" />

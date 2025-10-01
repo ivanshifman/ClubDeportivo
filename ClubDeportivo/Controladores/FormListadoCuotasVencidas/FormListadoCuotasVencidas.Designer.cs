@@ -149,6 +149,7 @@
             this.btnVolverListadoCuotasVencidas.TabIndex = 21;
             this.btnVolverListadoCuotasVencidas.Text = "Volver";
             this.btnVolverListadoCuotasVencidas.UseVisualStyleBackColor = false;
+            this.btnVolverListadoCuotasVencidas.Click += new System.EventHandler(this.btnVolverListadoCuotasVencidas_Click);
             // 
             // frmListadoCuotasVencidas
             // 
@@ -161,6 +162,7 @@
             this.Controls.Add(this.lblTituloVerCuotas);
             this.Name = "frmListadoCuotasVencidas";
             this.Text = "Club Deportivo - Listado Cuotas vencidas (Administrador)";
+            this.Load += new System.EventHandler(this.frmListadoCuotasVencidas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotasVencidas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

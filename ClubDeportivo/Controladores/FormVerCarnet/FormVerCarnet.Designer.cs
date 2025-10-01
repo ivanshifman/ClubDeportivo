@@ -59,9 +59,8 @@
             this.lblDniCompletoCarnet.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblDniCompletoCarnet.Location = new System.Drawing.Point(280, 176);
             this.lblDniCompletoCarnet.Name = "lblDniCompletoCarnet";
-            this.lblDniCompletoCarnet.Size = new System.Drawing.Size(370, 21);
+            this.lblDniCompletoCarnet.Size = new System.Drawing.Size(0, 21);
             this.lblDniCompletoCarnet.TabIndex = 12;
-            this.lblDniCompletoCarnet.Text = "FUTURO CAMPO DINAMICO SOCIO DNI---";
             // 
             // lblNombreCompletoCarnet
             // 
@@ -69,9 +68,8 @@
             this.lblNombreCompletoCarnet.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblNombreCompletoCarnet.Location = new System.Drawing.Point(280, 129);
             this.lblNombreCompletoCarnet.Name = "lblNombreCompletoCarnet";
-            this.lblNombreCompletoCarnet.Size = new System.Drawing.Size(419, 21);
+            this.lblNombreCompletoCarnet.Size = new System.Drawing.Size(0, 21);
             this.lblNombreCompletoCarnet.TabIndex = 11;
-            this.lblNombreCompletoCarnet.Text = "FUTURO CAMPO DINAMICO SOCIO NOMBRE---";
             // 
             // lblDniCarnet
             // 
@@ -129,9 +127,8 @@
             this.lblFechaNacimientoCompletoCarnet.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblFechaNacimientoCompletoCarnet.Location = new System.Drawing.Point(280, 225);
             this.lblFechaNacimientoCompletoCarnet.Name = "lblFechaNacimientoCompletoCarnet";
-            this.lblFechaNacimientoCompletoCarnet.Size = new System.Drawing.Size(376, 21);
+            this.lblFechaNacimientoCompletoCarnet.Size = new System.Drawing.Size(0, 21);
             this.lblFechaNacimientoCompletoCarnet.TabIndex = 16;
-            this.lblFechaNacimientoCompletoCarnet.Text = "FUTURO CAMPO DINAMICO SOCIO FDN---";
             // 
             // lblFechaAltaCompletoCarnet
             // 
@@ -139,9 +136,8 @@
             this.lblFechaAltaCompletoCarnet.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblFechaAltaCompletoCarnet.Location = new System.Drawing.Point(280, 278);
             this.lblFechaAltaCompletoCarnet.Name = "lblFechaAltaCompletoCarnet";
-            this.lblFechaAltaCompletoCarnet.Size = new System.Drawing.Size(362, 21);
+            this.lblFechaAltaCompletoCarnet.Size = new System.Drawing.Size(0, 21);
             this.lblFechaAltaCompletoCarnet.TabIndex = 17;
-            this.lblFechaAltaCompletoCarnet.Text = "FUTURO CAMPO DINAMICO SOCIO FA---";
             // 
             // lblFichaMedicaCompletoCarnet
             // 
@@ -149,9 +145,8 @@
             this.lblFichaMedicaCompletoCarnet.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.lblFichaMedicaCompletoCarnet.Location = new System.Drawing.Point(280, 322);
             this.lblFichaMedicaCompletoCarnet.Name = "lblFichaMedicaCompletoCarnet";
-            this.lblFichaMedicaCompletoCarnet.Size = new System.Drawing.Size(365, 21);
+            this.lblFichaMedicaCompletoCarnet.Size = new System.Drawing.Size(0, 21);
             this.lblFichaMedicaCompletoCarnet.TabIndex = 18;
-            this.lblFichaMedicaCompletoCarnet.Text = "FUTURO CAMPO DINAMICO SOCIO FM---";
             // 
             // btnVolverCarnet
             // 
@@ -169,6 +164,7 @@
             this.btnVolverCarnet.TabIndex = 19;
             this.btnVolverCarnet.Text = "Volver";
             this.btnVolverCarnet.UseVisualStyleBackColor = false;
+            this.btnVolverCarnet.Click += new System.EventHandler(this.btnVolverCarnet_Click);
             // 
             // frmVerCarnet
             // 
@@ -190,6 +186,7 @@
             this.Controls.Add(this.lblTituloPrincipalSocio);
             this.Name = "frmVerCarnet";
             this.Text = "Club Deportivo - Ver carnet Socio";
+            this.Load += new System.EventHandler(this.frmVerCarnet_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,13 +49,14 @@
             this.btnListarCuotasVencidas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btnListarCuotasVencidas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListarCuotasVencidas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnListarCuotasVencidas.Font = new System.Drawing.Font("Arial", 11.8F, System.Drawing.FontStyle.Bold);
+            this.btnListarCuotasVencidas.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
             this.btnListarCuotasVencidas.Location = new System.Drawing.Point(527, 140);
             this.btnListarCuotasVencidas.Name = "btnListarCuotasVencidas";
             this.btnListarCuotasVencidas.Size = new System.Drawing.Size(189, 67);
             this.btnListarCuotasVencidas.TabIndex = 7;
             this.btnListarCuotasVencidas.Text = "Listado de Cuotas vencidas";
             this.btnListarCuotasVencidas.UseVisualStyleBackColor = false;
+            this.btnListarCuotasVencidas.Click += new System.EventHandler(this.btnListarCuotasVencidas_Click);
             // 
             // btnCerrarAdmin
             // 
@@ -83,6 +84,7 @@
             this.btnVerUsuarios.TabIndex = 5;
             this.btnVerUsuarios.Text = "Ver Usuarios";
             this.btnVerUsuarios.UseVisualStyleBackColor = false;
+            this.btnVerUsuarios.Click += new System.EventHandler(this.btnVerUsuarios_Click);
             // 
             // frmPrincipalAdmin
             // 

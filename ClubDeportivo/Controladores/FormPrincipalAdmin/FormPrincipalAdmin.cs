@@ -22,5 +22,17 @@ namespace ClubDeportivo.Controladores.FormPrincipalAdmin
             this.Close();
             new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
         }
+
+        private void btnVerUsuarios_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FormVerUsuarios.frmVerUsuarios().Show();
+        }
+
+        private void btnListarCuotasVencidas_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FormListadoCuotasVencidas.frmListadoCuotasVencidas().Show();
+        }
     }
 }

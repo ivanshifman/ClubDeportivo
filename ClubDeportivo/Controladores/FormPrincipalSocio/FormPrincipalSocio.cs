@@ -31,5 +31,17 @@ namespace ClubDeportivo.Controladores.FormPrincipalSocio
             this.Close();
             new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
         }
+
+        private void btnVerCarnet_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FormVerCarnet.frmVerCarnet(idSocio).Show();
+        }
+
+        private void btnVerCuotas_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FormVerCuotas.frmVerCuotas(idSocio).Show();
+        }
     }
 }

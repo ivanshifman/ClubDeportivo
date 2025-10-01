@@ -47,6 +47,7 @@
             this.btnVerCuotas.TabIndex = 0;
             this.btnVerCuotas.Text = "Ver Cuotas";
             this.btnVerCuotas.UseVisualStyleBackColor = false;
+            this.btnVerCuotas.Click += new System.EventHandler(this.btnVerCuotas_Click);
             // 
             // btnCerrarSocio
             // 
@@ -88,6 +89,7 @@
             this.btnVerCarnet.TabIndex = 3;
             this.btnVerCarnet.Text = "Ver Carnet";
             this.btnVerCarnet.UseVisualStyleBackColor = false;
+            this.btnVerCarnet.Click += new System.EventHandler(this.btnVerCarnet_Click);
             // 
             // lblTituloPrincipalSocio
             // 

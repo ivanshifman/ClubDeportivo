@@ -130,6 +130,64 @@ namespace ClubDeportivo.Servicios
             }
         }
 
+        public Socio VerCarnet(int idSocio)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT p.*, s.fechaAlta, s.tieneCarnet, s.fichaMedica
+                FROM Persona p
+                INNER JOIN Socio s ON p.id_persona = s.id_persona
+                WHERE s.id_socio = @idSocio";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idSocio", idSocio);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return new Socio(
+                                    reader.GetString("nombre"),
+                                    reader.GetString("apellido"),
+                                    reader.GetString("dni"),
+                                    reader.GetDateTime("fecha_nacimiento"),
+                                    reader.GetString("usuario"),
+                                    reader.GetString("clave"),
+                                    reader.GetDateTime("fechaAlta"),
+                                    reader.GetBoolean("tieneCarnet"),
+                                    reader.GetBoolean("fichaMedica")
+                                )
+                                {
+                                    IdPersona = reader.GetInt32("id_persona"),
+                                    IdSocio = idSocio
+                                };
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error de base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+
 
 
     }

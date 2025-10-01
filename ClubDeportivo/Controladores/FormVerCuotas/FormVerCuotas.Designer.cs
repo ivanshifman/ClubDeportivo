@@ -122,6 +122,7 @@
             this.btnVolverCuota.TabIndex = 20;
             this.btnVolverCuota.Text = "Volver";
             this.btnVolverCuota.UseVisualStyleBackColor = false;
+            this.btnVolverCuota.Click += new System.EventHandler(this.btnVolverCuota_Click);
             // 
             // frmVerCuotas
             // 
@@ -134,6 +135,7 @@
             this.Controls.Add(this.lblTituloVerCuotas);
             this.Name = "frmVerCuotas";
             this.Text = "Club Deportivo - Ver Cuotas Socio";
+            this.Load += new System.EventHandler(this.frmVerCuotas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
