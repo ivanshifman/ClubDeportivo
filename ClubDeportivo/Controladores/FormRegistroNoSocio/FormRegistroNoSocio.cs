@@ -70,5 +70,9 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
                 throw new ArgumentException("La clave debe tener al menos 6 caracteres.");
         }
 
+        private void lblFechaNacimientoNoSocio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
