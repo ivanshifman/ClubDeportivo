@@ -9,7 +9,10 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
     {
         public frmRegistroSocio()
         {
-            InitializeComponent();
+            InitializeComponent();        
+            dtpSocio.MaxDate = DateTime.Today;
+            dtpSocio.MinDate = new DateTime(1900, 1, 1);
+            dtpSocio.Value = DateTime.Today;
         }
 
         private void btnRegistrarSocio_Click(object sender, EventArgs e)
@@ -59,6 +62,30 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
             }
         }
 
+        private void txtNombreSocio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoSocio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDniSocio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btnCancelarSocio_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -72,6 +99,12 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
 
             if (string.IsNullOrWhiteSpace(txtApellidoSocio.Text) || txtApellidoSocio.Text.Length > 100)
                 throw new ArgumentException("El apellido no puede estar vacío ni superar los 100 caracteres.");
+
+            if (!Regex.IsMatch(txtNombreSocio.Text.Trim(), @"^[a-zA-ZáéíóúÁÉÍÓÚüÜ\s]+$"))
+                throw new ArgumentException("El nombre solo puede contener letras y espacios.");
+
+            if (!Regex.IsMatch(txtApellidoSocio.Text.Trim(), @"^[a-zA-ZáéíóúÁÉÍÓÚüÜ\s]+$"))
+                throw new ArgumentException("El apellido solo puede contener letras y espacios.");
 
             if (string.IsNullOrWhiteSpace(txtDniSocio.Text) || !Regex.IsMatch(txtDniSocio.Text, @"^\d{7,8}$"))
                 throw new ArgumentException("El DNI debe tener entre 7 y 8 dígitos numéricos.");
@@ -88,7 +121,6 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
             if (!chkFichaMedicaSocio.Checked)
                 throw new ArgumentException("Debe completar la ficha médica para poder registrarse.");
         }
-
     }
 }
 

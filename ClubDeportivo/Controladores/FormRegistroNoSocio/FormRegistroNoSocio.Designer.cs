@@ -52,7 +52,7 @@
             this.btnCancelarNoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelarNoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarNoSocio.Location = new System.Drawing.Point(723, 390);
-            this.btnCancelarNoSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarNoSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarNoSocio.Name = "btnCancelarNoSocio";
             this.btnCancelarNoSocio.Size = new System.Drawing.Size(165, 47);
             this.btnCancelarNoSocio.TabIndex = 31;
@@ -67,7 +67,7 @@
             this.btnRegistrarNoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarNoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarNoSocio.Location = new System.Drawing.Point(723, 310);
-            this.btnRegistrarNoSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistrarNoSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
             this.btnRegistrarNoSocio.Size = new System.Drawing.Size(165, 47);
             this.btnRegistrarNoSocio.TabIndex = 30;
@@ -155,7 +155,7 @@
             // 
             this.dtpNoSocio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNoSocio.Location = new System.Drawing.Point(261, 266);
-            this.dtpNoSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpNoSocio.Margin = new System.Windows.Forms.Padding(4);
             this.dtpNoSocio.MaxDate = new System.DateTime(2025, 9, 26, 0, 0, 0, 0);
             this.dtpNoSocio.Name = "dtpNoSocio";
             this.dtpNoSocio.Size = new System.Drawing.Size(307, 30);
@@ -195,6 +195,7 @@
             this.txtDniNoSocio.Name = "txtDniNoSocio";
             this.txtDniNoSocio.Size = new System.Drawing.Size(307, 30);
             this.txtDniNoSocio.TabIndex = 18;
+            this.txtDniNoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniNoSocio_KeyPress);
             // 
             // txtApellidoNoSocio
             // 
@@ -206,6 +207,7 @@
             this.txtApellidoNoSocio.Name = "txtApellidoNoSocio";
             this.txtApellidoNoSocio.Size = new System.Drawing.Size(307, 30);
             this.txtApellidoNoSocio.TabIndex = 17;
+            this.txtApellidoNoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoNoSocio_KeyPress);
             // 
             // txtNombreNoSocio
             // 
@@ -217,6 +219,7 @@
             this.txtNombreNoSocio.Name = "txtNombreNoSocio";
             this.txtNombreNoSocio.Size = new System.Drawing.Size(307, 30);
             this.txtNombreNoSocio.TabIndex = 16;
+            this.txtNombreNoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreNoSocio_KeyPress);
             // 
             // frmRegistroNoSocio
             // 
@@ -239,7 +242,7 @@
             this.Controls.Add(this.txtDniNoSocio);
             this.Controls.Add(this.txtApellidoNoSocio);
             this.Controls.Add(this.txtNombreNoSocio);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRegistroNoSocio";
             this.Text = "Club Deportivo - Registro No Socio";
             this.ResumeLayout(false);

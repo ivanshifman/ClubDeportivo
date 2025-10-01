@@ -24,10 +24,12 @@ namespace ClubDeportivo.Servicios
                     {
                         cmd.Parameters.AddWithValue("@idPersona", idPersona);
                         cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "SELECT LAST_INSERT_ID();";
+                        int idNoSocio = Convert.ToInt32(cmd.ExecuteScalar());
+                        return idNoSocio;
                     }
                 }
-
-                return idPersona;
             }
             catch (MySqlException ex)
             {

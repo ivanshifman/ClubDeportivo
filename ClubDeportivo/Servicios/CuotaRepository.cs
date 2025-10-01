@@ -49,7 +49,7 @@ namespace ClubDeportivo.Servicios
         {
             try
             {
-                var ultima = ObtenerUltimaCuota(idSocio);
+                Cuota ultima = ObtenerUltimaCuota(idSocio);
                 DateTime fechaVencimientoNueva = (ultima != null && ultima.FechaVencimiento >= DateTime.Today)
                                                  ? ultima.FechaVencimiento.AddMonths(1)
                                                  : DateTime.Today.AddMonths(1);

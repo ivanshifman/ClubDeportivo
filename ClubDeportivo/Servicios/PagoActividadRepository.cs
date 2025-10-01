@@ -15,8 +15,18 @@ namespace ClubDeportivo.Servicios
                 using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
                     conn.Open();
+
+                    string checkQuery = "SELECT COUNT(*) FROM nosocio WHERE id_noSocio = @idNoSocio";
+                    using (var cmdCheck = new MySqlCommand(checkQuery, conn))
+                    {
+                        cmdCheck.Parameters.AddWithValue("@idNoSocio", pago.IdNoSocio);
+                        int count = Convert.ToInt32(cmdCheck.ExecuteScalar());
+                        if (count == 0)
+                            throw new Exception("No existe el NoSocio con ese ID.");
+                    }
+
                     string query = @"INSERT INTO PagoActividad (id_noSocio, id_actividad, fecha, montoAPagar, metodoPago)
-                                     VALUES (@idNoSocio, @idActividad, @fecha, @monto, @metodo)";
+                             VALUES (@idNoSocio, @idActividad, @fecha, @monto, @metodo)";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
@@ -41,6 +51,7 @@ namespace ClubDeportivo.Servicios
                 throw;
             }
         }
+
 
         public bool YaPagoActividad(int idNoSocio, int idActividad)
         {

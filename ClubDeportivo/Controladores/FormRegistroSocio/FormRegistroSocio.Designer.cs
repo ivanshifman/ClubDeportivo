@@ -56,6 +56,7 @@
             this.txtNombreSocio.Name = "txtNombreSocio";
             this.txtNombreSocio.Size = new System.Drawing.Size(307, 30);
             this.txtNombreSocio.TabIndex = 0;
+            this.txtNombreSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreSocio_KeyPress);
             // 
             // txtApellidoSocio
             // 
@@ -67,6 +68,7 @@
             this.txtApellidoSocio.Name = "txtApellidoSocio";
             this.txtApellidoSocio.Size = new System.Drawing.Size(307, 30);
             this.txtApellidoSocio.TabIndex = 1;
+            this.txtApellidoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoSocio_KeyPress);
             // 
             // txtDniSocio
             // 
@@ -78,6 +80,7 @@
             this.txtDniSocio.Name = "txtDniSocio";
             this.txtDniSocio.Size = new System.Drawing.Size(307, 30);
             this.txtDniSocio.TabIndex = 2;
+            this.txtDniSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniSocio_KeyPress);
             // 
             // txtUsuarioSocio
             // 
@@ -106,7 +109,7 @@
             // 
             this.dtpSocio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSocio.Location = new System.Drawing.Point(257, 266);
-            this.dtpSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpSocio.Margin = new System.Windows.Forms.Padding(4);
             this.dtpSocio.MaxDate = new System.DateTime(2025, 9, 26, 0, 0, 0, 0);
             this.dtpSocio.Name = "dtpSocio";
             this.dtpSocio.Size = new System.Drawing.Size(307, 30);
@@ -118,7 +121,7 @@
             this.chkFichaMedicaSocio.AutoSize = true;
             this.chkFichaMedicaSocio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFichaMedicaSocio.Location = new System.Drawing.Point(257, 432);
-            this.chkFichaMedicaSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkFichaMedicaSocio.Margin = new System.Windows.Forms.Padding(4);
             this.chkFichaMedicaSocio.Name = "chkFichaMedicaSocio";
             this.chkFichaMedicaSocio.Size = new System.Drawing.Size(149, 27);
             this.chkFichaMedicaSocio.TabIndex = 6;
@@ -208,7 +211,7 @@
             this.btnRegistrarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarSocio.Location = new System.Drawing.Point(719, 310);
-            this.btnRegistrarSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistrarSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistrarSocio.Name = "btnRegistrarSocio";
             this.btnRegistrarSocio.Size = new System.Drawing.Size(165, 47);
             this.btnRegistrarSocio.TabIndex = 14;
@@ -223,7 +226,7 @@
             this.btnCancelarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarSocio.Location = new System.Drawing.Point(719, 390);
-            this.btnCancelarSocio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarSocio.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarSocio.Name = "btnCancelarSocio";
             this.btnCancelarSocio.Size = new System.Drawing.Size(165, 47);
             this.btnCancelarSocio.TabIndex = 15;
