@@ -32,10 +32,10 @@
             this.cmbActividad = new System.Windows.Forms.ComboBox();
             this.lblActividad = new System.Windows.Forms.Label();
             this.grpPagoActividad = new System.Windows.Forms.GroupBox();
-            this.cmbMetodoPagoActividad = new System.Windows.Forms.ComboBox();
-            this.lblMetodoPago = new System.Windows.Forms.Label();
             this.txtMontoCuota = new System.Windows.Forms.TextBox();
             this.lblMontoActividad = new System.Windows.Forms.Label();
+            this.cmbMetodoPagoActividad = new System.Windows.Forms.ComboBox();
+            this.lblMetodoPago = new System.Windows.Forms.Label();
             this.btnPagarActividad = new System.Windows.Forms.Button();
             this.btnCancelarActividad = new System.Windows.Forms.Button();
             this.grpPagoActividad.SuspendLayout();
@@ -88,6 +88,28 @@
             this.grpPagoActividad.TabStop = false;
             this.grpPagoActividad.Text = "Detalle del pago";
             // 
+            // txtMontoCuota
+            // 
+            this.txtMontoCuota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMontoCuota.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMontoCuota.Location = new System.Drawing.Point(182, 39);
+            this.txtMontoCuota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMontoCuota.MaxLength = 100;
+            this.txtMontoCuota.Name = "txtMontoCuota";
+            this.txtMontoCuota.ReadOnly = true;
+            this.txtMontoCuota.Size = new System.Drawing.Size(209, 30);
+            this.txtMontoCuota.TabIndex = 18;
+            // 
+            // lblMontoActividad
+            // 
+            this.lblMontoActividad.AutoSize = true;
+            this.lblMontoActividad.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
+            this.lblMontoActividad.Location = new System.Drawing.Point(15, 48);
+            this.lblMontoActividad.Name = "lblMontoActividad";
+            this.lblMontoActividad.Size = new System.Drawing.Size(71, 21);
+            this.lblMontoActividad.TabIndex = 17;
+            this.lblMontoActividad.Text = "Monto:";
+            // 
             // cmbMetodoPagoActividad
             // 
             this.cmbMetodoPagoActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -111,28 +133,6 @@
             this.lblMetodoPago.TabIndex = 15;
             this.lblMetodoPago.Text = "Medio de Pago:";
             // 
-            // txtMontoCuota
-            // 
-            this.txtMontoCuota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMontoCuota.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMontoCuota.Location = new System.Drawing.Point(182, 39);
-            this.txtMontoCuota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtMontoCuota.MaxLength = 100;
-            this.txtMontoCuota.Name = "txtMontoCuota";
-            this.txtMontoCuota.ReadOnly = true;
-            this.txtMontoCuota.Size = new System.Drawing.Size(209, 30);
-            this.txtMontoCuota.TabIndex = 18;
-            // 
-            // lblMontoActividad
-            // 
-            this.lblMontoActividad.AutoSize = true;
-            this.lblMontoActividad.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold);
-            this.lblMontoActividad.Location = new System.Drawing.Point(15, 48);
-            this.lblMontoActividad.Name = "lblMontoActividad";
-            this.lblMontoActividad.Size = new System.Drawing.Size(71, 21);
-            this.lblMontoActividad.TabIndex = 17;
-            this.lblMontoActividad.Text = "Monto:";
-            // 
             // btnPagarActividad
             // 
             this.btnPagarActividad.BackColor = System.Drawing.Color.Chartreuse;
@@ -146,6 +146,7 @@
             this.btnPagarActividad.TabIndex = 16;
             this.btnPagarActividad.Text = "Pagar";
             this.btnPagarActividad.UseVisualStyleBackColor = false;
+            this.btnPagarActividad.Click += new System.EventHandler(this.btnPagarActividad_Click);
             // 
             // btnCancelarActividad
             // 
@@ -160,6 +161,7 @@
             this.btnCancelarActividad.TabIndex = 17;
             this.btnCancelarActividad.Text = "Cancelar";
             this.btnCancelarActividad.UseVisualStyleBackColor = false;
+            this.btnCancelarActividad.Click += new System.EventHandler(this.btnCancelarActividad_Click);
             // 
             // frmPagarActividad
             // 
@@ -175,6 +177,7 @@
             this.Controls.Add(this.lblTituloPagarActividad);
             this.Name = "frmPagarActividad";
             this.Text = "Club Deportivo - Pagar Actividad";
+            this.Load += new System.EventHandler(this.frmPagarActividad_Load);
             this.grpPagoActividad.ResumeLayout(false);
             this.grpPagoActividad.PerformLayout();
             this.ResumeLayout(false);

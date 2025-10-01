@@ -239,14 +239,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelos\Actividad.cs" />
     <Compile Include="Modelos\Administrador.cs" />
     <Compile Include="Modelos\Cuota.cs" />
     <Compile Include="Modelos\NoSocio.cs" />
+    <Compile Include="Modelos\PagoActividad.cs" />
     <Compile Include="Modelos\Persona.cs" />
     <Compile Include="Modelos\Socio.cs" />
+    <Compile Include="Servicios\ActividadRepository.cs" />
     <Compile Include="Servicios\AdministradorRepository.cs" />
     <Compile Include="Servicios\CuotaRepository.cs" />
     <Compile Include="Servicios\NoSocioRepository.cs" />
+    <Compile Include="Servicios\PagoActividadRepository.cs" />
     <Compile Include="Servicios\PersonaRepository.cs" />
     <Compile Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.cs">
       <SubType>Form</SubType>

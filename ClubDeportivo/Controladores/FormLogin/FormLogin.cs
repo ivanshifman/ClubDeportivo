@@ -102,7 +102,9 @@ namespace ClubDeportivo.Controladores.FrmLogin
                     VerificarCuotaSocio(idPersona);
                     break;
                 case "nosocio":
-                    new ClubDeportivo.Controladores.FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
+                    var noSocioRepo = new ClubDeportivo.Servicios.NoSocioRepository();
+                    int idNoSocio = noSocioRepo.ObtenerIdNoSocioPorIdPersona(idPersona);
+                    new ClubDeportivo.Controladores.FormPrincipalNoSocio.frmPrincipalNoSocio(idNoSocio).Show();
                     break;
                 default:
                     MessageBox.Show($"Rol desconocido: {rol}");

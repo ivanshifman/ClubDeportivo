@@ -31,7 +31,7 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
                 repo.Registrar(noSocio);
 
                 this.Close();
-                new FormPrincipalNoSocio.frmPrincipalNoSocio().Show();
+                new FormPrincipalNoSocio.frmPrincipalNoSocio(noSocio.IdNoSocio).Show();
             }
             catch (ArgumentException ex)
             {

@@ -84,6 +84,7 @@
             this.btnVerActividadesDisponibles.TabIndex = 5;
             this.btnVerActividadesDisponibles.Text = "Ver Actividades disponibles";
             this.btnVerActividadesDisponibles.UseVisualStyleBackColor = false;
+            this.btnVerActividadesDisponibles.Click += new System.EventHandler(this.btnVerActividadesDisponibles_Click);
             // 
             // frmPrincipalNoSocio
             // 

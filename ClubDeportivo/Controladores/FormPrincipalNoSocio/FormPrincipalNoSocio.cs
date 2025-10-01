@@ -5,14 +5,24 @@ namespace ClubDeportivo.Controladores.FormPrincipalNoSocio
 {
     public partial class frmPrincipalNoSocio : Form
     {
-        public frmPrincipalNoSocio()
+        private readonly int idNoSocio;
+
+        public frmPrincipalNoSocio(int idNoSocio)
         {
-            InitializeComponent();      
+            InitializeComponent();
+            this.idNoSocio = idNoSocio;
         }
 
         private void btnPagarActividad_Click(object sender, EventArgs e)
         {
+            this.Close();
+            new ClubDeportivo.Controladores.FormPagarActividad.frmPagarActividad(idNoSocio).Show();
+        }
 
+        private void btnVerActividadesDisponibles_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FormVerActividades.frmVerActividades(idNoSocio).Show();
         }
 
         private void btnCerrarNoSocio_Click(object sender, EventArgs e)
@@ -20,5 +30,7 @@ namespace ClubDeportivo.Controladores.FormPrincipalNoSocio
             this.Close();
             new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
         }
+
+
     }
 }

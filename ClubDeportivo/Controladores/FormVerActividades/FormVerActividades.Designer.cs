@@ -139,6 +139,7 @@
             this.btnVolverActividades.TabIndex = 20;
             this.btnVolverActividades.Text = "Volver";
             this.btnVolverActividades.UseVisualStyleBackColor = false;
+            this.btnVolverActividades.Click += new System.EventHandler(this.btnVolverActividades_Click);
             // 
             // frmVerActividades
             // 
@@ -151,6 +152,7 @@
             this.Controls.Add(this.lblTituloVerActividades);
             this.Name = "frmVerActividades";
             this.Text = "Club Deportivo - Ver Actividades";
+            this.Load += new System.EventHandler(this.frmVerActividades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActividades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

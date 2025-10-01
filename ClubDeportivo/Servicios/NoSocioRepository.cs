@@ -41,6 +41,21 @@ namespace ClubDeportivo.Servicios
             }
         }
 
+        public int ObtenerIdNoSocioPorIdPersona(int idPersona)
+        {
+            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            {
+                conn.Open();
+                string query = "SELECT id_noSocio FROM NoSocio WHERE id_persona = @idPersona";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idPersona", idPersona);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
+
     }
 }
 
