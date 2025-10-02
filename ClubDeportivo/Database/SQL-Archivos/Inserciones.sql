@@ -12,8 +12,8 @@ INSERT INTO Persona (nombre, apellido, dni, fecha_nacimiento, usuario, clave) VA
 -- Insertar Socios
 -- ======================
 INSERT INTO Socio (id_persona, fechaAlta, tieneCarnet, fichaMedica) VALUES
-(1, '2025-01-01', TRUE, TRUE),
-(2, '2025-02-15', TRUE, TRUE);
+(1, '2025-09-01', TRUE, TRUE),
+(2, '2025-10-01', TRUE, TRUE);
 
 -- ======================
 -- Insertar NoSocios
@@ -33,18 +33,18 @@ INSERT INTO Administrador (id_persona) VALUES
 -- ======================
 INSERT INTO Cuota (id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion) VALUES
 (1, 2000.00, '2025-09-01', '2025-09-30', 'Efectivo', '0'),
-(2, 2000.00, '2025-09-05', '2025-10-04', 'Tarjeta', '3');
+(2, 2000.00, '2025-10-01', '2025-10-31', 'Tarjeta', '3');
 
 -- ======================
 -- Insertar Actividades
 -- ======================
 INSERT INTO Actividad (nombre, tipo, profesor, horario, capacidad, costo) VALUES
-('Gimnasio', 'Musculación', 'Sánchez', '2025-09-26 10:00:00', 20, 500.00),
-('Natación', 'Deporte', 'Ramírez', '2025-09-26 12:00:00', 15, 600.00);
+('Gimnasio', 'Musculación', 'Sánchez', '2025-12-26 10:00:00', 20, 500.00),
+('Natación', 'Deporte', 'Ramírez', '2025-12-26 12:00:00', 15, 600.00);
 
 -- ======================
 -- Insertar PagoActividad
 -- ======================
 INSERT INTO PagoActividad (id_noSocio, id_actividad, fecha, montoAPagar, metodoPago) VALUES
-(1, 1, '2025-09-25', 500.00, 'Efectivo'),
-(2, 2, '2025-09-25', 600.00, 'Tarjeta');
+(1, 1, '2025-10-02', 500.00, 'Efectivo'),
+(2, 2, '2025-10-02', 600.00, 'Tarjeta');
