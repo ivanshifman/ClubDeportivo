@@ -186,10 +186,6 @@ namespace ClubDeportivo.Servicios
                 throw;
             }
         }
-
-
-
-
     }
 }
 

@@ -236,9 +236,6 @@ namespace ClubDeportivo.Servicios
 
             return tabla;
         }
-
-
-
     }
 }
 

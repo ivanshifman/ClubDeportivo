@@ -74,6 +74,12 @@ namespace ClubDeportivo.Modelos
                 costo = value;
             }
         }
+
+        public string NombreConHorario
+        {
+            get => $"{Nombre} - {Horario:dd/MM/yyyy HH:mm}";
+        }
+
     }
 }
 

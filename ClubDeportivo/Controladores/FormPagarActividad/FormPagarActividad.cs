@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ClubDeportivo.Controladores.FormPagarActividad
@@ -18,8 +19,10 @@ namespace ClubDeportivo.Controladores.FormPagarActividad
             var repo = new ClubDeportivo.Servicios.ActividadRepository();
             var actividades = repo.ObtenerTodasActividades();
 
+            actividades = actividades.OrderBy(a => a.Nombre).ToList();
+
             cmbActividad.DataSource = actividades;
-            cmbActividad.DisplayMember = "Nombre";
+            cmbActividad.DisplayMember = "NombreConHorario";
             cmbActividad.ValueMember = "IdActividad";
 
             cmbActividad.SelectedIndexChanged += CmbActividad_SelectedIndexChanged;
