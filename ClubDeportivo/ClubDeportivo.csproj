@@ -239,6 +239,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\FormAgregarActividad\FormAgregarActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormAgregarActividad\FormAgregarActividad.Designer.cs">
+      <DependentUpon>FormAgregarActividad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Actividad.cs" />
     <Compile Include="Modelos\Administrador.cs" />
     <Compile Include="Modelos\Cuota.cs" />
@@ -340,6 +346,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\SocioRepository.cs" />
+    <EmbeddedResource Include="Controladores\FormAgregarActividad\FormAgregarActividad.resx">
+      <DependentUpon>FormAgregarActividad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controladores\FormListadoCuotasVencidas\FormListadoCuotasVencidas.resx">
       <DependentUpon>FormListadoCuotasVencidas.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClubDeportivo.Controladores.FormPrincipalAdmin
@@ -33,6 +26,12 @@ namespace ClubDeportivo.Controladores.FormPrincipalAdmin
         {
             this.Close();
             new ClubDeportivo.Controladores.FormListadoCuotasVencidas.frmListadoCuotasVencidas().Show();
+        }
+
+        private void btnAgregarActividad_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.FormAgregarActividad.frmAgregarActividad().Show();
         }
     }
 }

@@ -109,6 +109,37 @@ namespace ClubDeportivo.Servicios
             return false;
         }
 
+        public bool AgregarActividad(Actividad actividad)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO Actividad (nombre, tipo, profesor, horario, capacidad, costo)
+                             VALUES (@nombre, @tipo, @profesor, @horario, @capacidad, @costo)";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", actividad.Nombre);
+                        cmd.Parameters.AddWithValue("@tipo", actividad.Tipo);
+                        cmd.Parameters.AddWithValue("@profesor", actividad.Profesor);
+                        cmd.Parameters.AddWithValue("@horario", actividad.Horario);
+                        cmd.Parameters.AddWithValue("@capacidad", actividad.Capacidad);
+                        cmd.Parameters.AddWithValue("@costo", actividad.Costo);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar actividad: {ex.Message}");
+                return false;
+            }
+        }
+
+
     }
 }
 

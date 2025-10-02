@@ -259,6 +259,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmRegistroSocio";
             this.Text = "Club Deportivo - Registro Socio";
+            this.Shown += new System.EventHandler(this.frmRegistroSocio_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRegistroSocio_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

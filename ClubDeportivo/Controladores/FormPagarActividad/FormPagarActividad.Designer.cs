@@ -178,6 +178,7 @@
             this.Name = "frmPagarActividad";
             this.Text = "Club Deportivo - Pagar Actividad";
             this.Load += new System.EventHandler(this.frmPagarActividad_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPagarActividad_KeyDown);
             this.grpPagoActividad.ResumeLayout(false);
             this.grpPagoActividad.PerformLayout();
             this.ResumeLayout(false);

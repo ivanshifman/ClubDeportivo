@@ -12,6 +12,7 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
         {
             InitializeComponent();
             this.idSocio = idSocio;
+            this.KeyPreview = true;
         }
 
         private void frmPagarCuota_Load(object sender, EventArgs e)
@@ -29,6 +30,16 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
         private void btnPagarCuota_Click(object sender, EventArgs e)
         {
             RegistrarCuota();
+        }
+
+        private void frmPagarCuota_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+                btnPagarCuota.PerformClick();
+            }
         }
 
         private void btnCancelarCuota_Click(object sender, EventArgs e)

@@ -207,6 +207,7 @@
             this.Name = "frmPagarCuota";
             this.Text = "Club Deportivo - Pagar Cuota Socio";
             this.Load += new System.EventHandler(this.frmPagarCuota_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPagarCuota_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

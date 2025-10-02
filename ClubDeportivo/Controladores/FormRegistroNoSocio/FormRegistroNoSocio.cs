@@ -13,6 +13,12 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             dtpNoSocio.MaxDate = DateTime.Today;
             dtpNoSocio.MinDate = new DateTime(1900, 1, 1);
             dtpNoSocio.Value = DateTime.Today;
+            this.KeyPreview = true;
+        }
+
+        private void frmRegistroNoSocio_Shown(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new Action(() => txtNombreNoSocio.Focus()));
         }
 
         private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
@@ -43,6 +49,16 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al registrar el no socio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmRegistroNoSocio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+                btnRegistrarNoSocio.PerformClick();
             }
         }
 

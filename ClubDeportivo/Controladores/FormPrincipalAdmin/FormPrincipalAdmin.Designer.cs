@@ -32,6 +32,7 @@
             this.btnListarCuotasVencidas = new System.Windows.Forms.Button();
             this.btnCerrarAdmin = new System.Windows.Forms.Button();
             this.btnVerUsuarios = new System.Windows.Forms.Button();
+            this.btnAgregarActividad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTituloPrincipalAdmin
@@ -86,12 +87,27 @@
             this.btnVerUsuarios.UseVisualStyleBackColor = false;
             this.btnVerUsuarios.Click += new System.EventHandler(this.btnVerUsuarios_Click);
             // 
+            // btnAgregarActividad
+            // 
+            this.btnAgregarActividad.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnAgregarActividad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarActividad.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregarActividad.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarActividad.Location = new System.Drawing.Point(167, 293);
+            this.btnAgregarActividad.Name = "btnAgregarActividad";
+            this.btnAgregarActividad.Size = new System.Drawing.Size(189, 67);
+            this.btnAgregarActividad.TabIndex = 10;
+            this.btnAgregarActividad.Text = "Agregar Actividad";
+            this.btnAgregarActividad.UseVisualStyleBackColor = false;
+            this.btnAgregarActividad.Click += new System.EventHandler(this.btnAgregarActividad_Click);
+            // 
             // frmPrincipalAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(856, 450);
+            this.ClientSize = new System.Drawing.Size(870, 450);
+            this.Controls.Add(this.btnAgregarActividad);
             this.Controls.Add(this.lblTituloPrincipalAdmin);
             this.Controls.Add(this.btnListarCuotasVencidas);
             this.Controls.Add(this.btnCerrarAdmin);
@@ -109,5 +125,6 @@
         private System.Windows.Forms.Button btnListarCuotasVencidas;
         private System.Windows.Forms.Button btnCerrarAdmin;
         private System.Windows.Forms.Button btnVerUsuarios;
+        private System.Windows.Forms.Button btnAgregarActividad;
     }
 }

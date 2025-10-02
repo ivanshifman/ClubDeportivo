@@ -12,6 +12,7 @@ namespace ClubDeportivo.Controladores.FormPagarActividad
         {
             InitializeComponent();
             this.idNoSocio = idNoSocio;
+            this.KeyPreview = true;
         }
 
         private void frmPagarActividad_Load(object sender, EventArgs e)
@@ -93,6 +94,15 @@ namespace ClubDeportivo.Controladores.FormPagarActividad
             }
         }
 
+        private void frmPagarActividad_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+                btnPagarActividad.PerformClick();
+            }
+        }
 
         private void ActualizarMonto()
         {
