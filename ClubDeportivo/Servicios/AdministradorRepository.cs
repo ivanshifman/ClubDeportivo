@@ -34,11 +34,11 @@ namespace ClubDeportivo.Servicios
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show($"Error en la base de datos: {ex.Message}");
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error inesperado: {ex.Message}");
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return tabla;
@@ -69,11 +69,11 @@ namespace ClubDeportivo.Servicios
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show($"Error en la base de datos: {ex.Message}");
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error inesperado: {ex.Message}");
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return tabla;

@@ -152,8 +152,7 @@ namespace ClubDeportivo.Controladores.FrmLogin
                 {
                     new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio(idSocio).Show();
                     this.Hide();
-                }
-              
+                }            
             }
         }
 

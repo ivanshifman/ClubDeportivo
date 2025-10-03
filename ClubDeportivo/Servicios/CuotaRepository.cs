@@ -60,9 +60,14 @@ namespace ClubDeportivo.Servicios
 
                 return RegistrarCuota(nuevaCuota);
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al registrar la renovación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -82,9 +87,14 @@ namespace ClubDeportivo.Servicios
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al verificar cuota pagada: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
@@ -96,21 +106,33 @@ namespace ClubDeportivo.Servicios
                 using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
                     conn.Open();
-                    string q = @"SELECT COUNT(*) FROM Cuota 
-                         WHERE id_socio = @idSocio AND fechaVencimiento >= CURDATE()";
-                    using (var cmd = new MySqlCommand(q, conn))
+                    string query = @"SELECT EXISTS(
+                                SELECT 1 
+                                FROM Cuota 
+                                WHERE id_socio = @idSocio 
+                                  AND fechaVencimiento >= CURDATE()
+                             )";
+
+                    using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@idSocio", idSocio);
-                        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                        int result = Convert.ToInt32(cmd.ExecuteScalar());
+                        return result == 1;
                     }
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                MessageBox.Show($"Error al verificar cuota vigente: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
+
 
         public DataTable ObtenerCuotasPorSocio(int idSocio)
         {
@@ -190,6 +212,11 @@ namespace ClubDeportivo.Servicios
                         }
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
             catch (Exception ex)
             {

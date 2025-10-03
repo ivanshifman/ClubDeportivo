@@ -45,18 +45,32 @@ namespace ClubDeportivo.Servicios
 
         public int ObtenerIdNoSocioPorIdPersona(int idPersona)
         {
-            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            try
             {
-                conn.Open();
-                string query = "SELECT id_noSocio FROM NoSocio WHERE id_persona = @idPersona";
-                using (var cmd = new MySqlCommand(query, conn))
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
-                    cmd.Parameters.AddWithValue("@idPersona", idPersona);
-                    return Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Open();
+                    string query = "SELECT id_noSocio FROM NoSocio WHERE id_persona = @idPersona";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idPersona", idPersona);
+
+                        object result = cmd.ExecuteScalar();
+                        return (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+                    }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
-
 
     }
 }

@@ -40,9 +40,13 @@ namespace ClubDeportivo.Servicios
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al obtener actividades: {ex.Message}");
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return actividades;
@@ -66,9 +70,13 @@ namespace ClubDeportivo.Servicios
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al reducir capacidad: {ex.Message}");
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -101,9 +109,13 @@ namespace ClubDeportivo.Servicios
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al verificar disponibilidad: {ex.Message}");
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return false;
@@ -132,10 +144,15 @@ namespace ClubDeportivo.Servicios
                 }
                 return true;
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al agregar actividad: {ex.Message}");
-                return false;
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 

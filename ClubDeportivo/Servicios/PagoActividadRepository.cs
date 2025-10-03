@@ -74,10 +74,15 @@ namespace ClubDeportivo.Servicios
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al verificar pago previo: {ex.Message}");
-                return false;
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 
