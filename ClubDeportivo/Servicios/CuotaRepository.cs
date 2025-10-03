@@ -79,11 +79,17 @@ namespace ClubDeportivo.Servicios
                 using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
                     conn.Open();
-                    string q = "SELECT COUNT(*) FROM Cuota WHERE id_socio = @idSocio";
-                    using (var cmd = new MySqlCommand(q, conn))
+                    string query = @"SELECT EXISTS(
+                                SELECT 1
+                                FROM cuota
+                                WHERE id_socio = @idSocio
+                             )";
+
+                    using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@idSocio", idSocio);
-                        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                        int result = Convert.ToInt32(cmd.ExecuteScalar());
+                        return result == 1;
                     }
                 }
             }
@@ -98,6 +104,7 @@ namespace ClubDeportivo.Servicios
                 throw;
             }
         }
+
 
         public bool TieneCuotaVigente(int idSocio)
         {
