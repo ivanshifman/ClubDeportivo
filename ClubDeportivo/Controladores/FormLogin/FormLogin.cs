@@ -145,15 +145,15 @@ namespace ClubDeportivo.Controladores.FrmLogin
             {
                 var result = formPagar.ShowDialog();
 
+                var cuotaRepo = new ClubDeportivo.Servicios.CuotaRepository();
+                bool tieneCuota = cuotaRepo.TieneCuotaPagada(idSocio);
+
                 if (result == DialogResult.OK)
                 {
                     new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio(idSocio).Show();
-                    this.Close();
+                    this.Hide();
                 }
-                else
-                {
-                    this.Show();
-                }
+              
             }
         }
 
