@@ -37,10 +37,10 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
                 );
 
                 var repo = new ClubDeportivo.Servicios.NoSocioRepository();
-                repo.Registrar(noSocio);
+                int idNoSocio = repo.Registrar(noSocio);
 
                 this.Close();
-                new FormPrincipalNoSocio.frmPrincipalNoSocio(noSocio.IdNoSocio).Show();
+                new FormPrincipalNoSocio.frmPrincipalNoSocio(idNoSocio).Show();
             }
             catch (ArgumentException ex)
             {

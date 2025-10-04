@@ -16,7 +16,7 @@ namespace ClubDeportivo.Servicios
                 {
                     conn.Open();
 
-                    string checkQuery = "SELECT COUNT(*) FROM nosocio WHERE id_noSocio = @idNoSocio";
+                    string checkQuery = "SELECT COUNT(*) FROM NoSocio WHERE id_noSocio = @idNoSocio";
                     using (var cmdCheck = new MySqlCommand(checkQuery, conn))
                     {
                         cmdCheck.Parameters.AddWithValue("@idNoSocio", pago.IdNoSocio);
