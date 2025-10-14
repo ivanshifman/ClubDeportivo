@@ -22,6 +22,22 @@ namespace ClubDeportivo.Controladores.FormVerActividades
             foreach (var act in actividades)
             {
                 bool disponible = repo.VerificarDisponibilidad(act.IdActividad);
+                bool inscripto = repo.EstaInscripto(idNoSocio, act.IdActividad);
+
+                string estado;
+
+                if (inscripto)
+                {
+                    estado = "Ya inscripto";
+                }
+                else if (disponible)
+                {
+                    estado = "Disponible";
+                }
+                else
+                {
+                    estado = "Sin cupos";
+                }
 
                 dgvActividades.Rows.Add(
                     act.Nombre,
@@ -30,7 +46,7 @@ namespace ClubDeportivo.Controladores.FormVerActividades
                     act.Horario.ToString("dd/MM/yyyy HH:mm"),
                     act.Capacidad,
                     act.Costo,
-                    disponible ? "Disponible" : "Sin cupos"
+                    estado
                 );
             }
         }

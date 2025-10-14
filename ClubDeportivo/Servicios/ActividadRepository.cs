@@ -80,8 +80,6 @@ namespace ClubDeportivo.Servicios
             }
         }
 
-
-
         public bool VerificarDisponibilidad(int idActividad)
         {
             try
@@ -121,6 +119,41 @@ namespace ClubDeportivo.Servicios
             return false;
         }
 
+        public bool EstaInscripto(int idNoSocio, int idActividad)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    conn.Open();
+
+                    string query = @"SELECT COUNT(*) 
+                             FROM PagoActividad 
+                             WHERE id_noSocio = @idNoSocio AND id_actividad = @idActividad";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idNoSocio", idNoSocio);
+                        cmd.Parameters.AddWithValue("@idActividad", idActividad);
+
+                        var result = Convert.ToInt32(cmd.ExecuteScalar());
+                        return result > 0; // Si hay al menos un registro, ya está inscripto
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
+        }
+
+
         public bool AgregarActividad(Actividad actividad)
         {
             try
@@ -155,8 +188,5 @@ namespace ClubDeportivo.Servicios
                 throw;
             }
         }
-
-
     }
 }
-
