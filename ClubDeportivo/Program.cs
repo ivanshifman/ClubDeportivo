@@ -1,4 +1,4 @@
-﻿using ClubDeportivo.Controladores.FrmLogin;
+﻿using ClubDeportivo.Controladores.FormLogin;
 using DotNetEnv;
 using System;
 using System.IO;

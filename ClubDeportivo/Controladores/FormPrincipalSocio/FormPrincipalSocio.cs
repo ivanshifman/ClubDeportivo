@@ -29,7 +29,7 @@ namespace ClubDeportivo.Controladores.FormPrincipalSocio
         private void btnCerrarSocio_Click(object sender, EventArgs e)
         {
             this.Close();
-            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+            new ClubDeportivo.Controladores.FormLogin.frmLogin().Show();
         }
 
         private void btnVerCarnet_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace ClubDeportivo.Controladores.FormPrincipalSocio
         private void btnVerPerfilSocio_Click(object sender, EventArgs e)
         {
             this.Close();
-            new ClubDeportivo.Controladores.VerPerfilSocio.frmVerPerfilSocio(idSocio).Show();
+            new ClubDeportivo.Controladores.FormVerPerfilSocio.frmVerPerfilSocio(idSocio).Show();
         }
     }
 }

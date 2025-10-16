@@ -89,7 +89,7 @@ namespace ClubDeportivo.Controladores.FormRegistroNoSocio
         private void btnCancelarNoSocio_Click(object sender, EventArgs e)
         {
             this.Close();
-            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+            new ClubDeportivo.Controladores.FormLogin.frmLogin().Show();
         }
 
         private void ValidarCampos()

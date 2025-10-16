@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ClubDeportivo.Controladores.FrmLogin
+namespace ClubDeportivo.Controladores.FormLogin
 {
     public partial class frmLogin : Form
     {
@@ -145,14 +145,18 @@ namespace ClubDeportivo.Controladores.FrmLogin
             {
                 var result = formPagar.ShowDialog();
 
-                var cuotaRepo = new ClubDeportivo.Servicios.CuotaRepository();
-                bool tieneCuota = cuotaRepo.TieneCuotaPagada(idSocio);
-
                 if (result == DialogResult.OK)
                 {
                     new ClubDeportivo.Controladores.FormPrincipalSocio.frmPrincipalSocio(idSocio).Show();
                     this.Hide();
-                }            
+                }
+                else
+                {
+                    txtUsuario.Clear();
+                    txtPass.Clear();
+                    txtUsuario.Focus();
+                    this.Show();
+                }
             }
         }
 

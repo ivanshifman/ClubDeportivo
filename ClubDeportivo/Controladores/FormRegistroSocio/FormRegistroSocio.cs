@@ -55,7 +55,7 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
                 else
                 {
                     this.Close();
-                    new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+                    new ClubDeportivo.Controladores.FormLogin.frmLogin().Show();
                 }
             }
             catch (ArgumentException ex)
@@ -105,7 +105,7 @@ namespace ClubDeportivo.Controladores.FormRegistroSocio
         private void btnCancelarSocio_Click(object sender, EventArgs e)
         {
             this.Close();
-            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+            new ClubDeportivo.Controladores.FormLogin.frmLogin().Show();
         }
 
         private void ValidarCampos()

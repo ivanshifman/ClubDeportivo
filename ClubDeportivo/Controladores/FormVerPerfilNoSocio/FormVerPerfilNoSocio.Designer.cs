@@ -1,4 +1,4 @@
-﻿namespace ClubDeportivo.Controladores.VerPerfilNoSocio
+﻿namespace ClubDeportivo.Controladores.FormVerPerfilNoSocio
 {
     partial class frmVerPerfilNoSocio
     {

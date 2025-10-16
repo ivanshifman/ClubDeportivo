@@ -73,11 +73,8 @@ namespace ClubDeportivo.Controladores.FormPagarCuota
 
             if (result == DialogResult.OK)
             {
-                if (!tieneInicial || !tieneVigente)
-                {
-                    this.DialogResult = DialogResult.Cancel;
-                }
-                this.Close();
+                this.DialogResult = DialogResult.Cancel; // para que ShowDialog() devuelva Cancel
+                this.Close(); // cerrar el form
             }
         }
         

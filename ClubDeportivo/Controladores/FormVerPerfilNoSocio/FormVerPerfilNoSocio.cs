@@ -3,7 +3,7 @@ using ClubDeportivo.Servicios;
 using System;
 using System.Windows.Forms;
 
-namespace ClubDeportivo.Controladores.VerPerfilNoSocio
+namespace ClubDeportivo.Controladores.FormVerPerfilNoSocio
 {
     public partial class frmVerPerfilNoSocio : Form
     {

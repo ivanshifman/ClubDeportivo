@@ -28,13 +28,13 @@ namespace ClubDeportivo.Controladores.FormPrincipalNoSocio
         private void btnCerrarNoSocio_Click(object sender, EventArgs e)
         {
             this.Close();
-            new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
+            new ClubDeportivo.Controladores.FormLogin.frmLogin().Show();
         }
 
         private void btnVerPerfilNoSocio_Click(object sender, EventArgs e)
         {
             this.Close();
-            new ClubDeportivo.Controladores.VerPerfilNoSocio.frmVerPerfilNoSocio(idNoSocio).Show();
+            new ClubDeportivo.Controladores.FormVerPerfilNoSocio.frmVerPerfilNoSocio(idNoSocio).Show();
         }
     }
 }

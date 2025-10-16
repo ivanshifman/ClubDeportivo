@@ -1,4 +1,4 @@
-﻿namespace ClubDeportivo.Controladores.FrmLogin
+﻿namespace ClubDeportivo.Controladores.FormLogin
 {
     partial class frmLogin
     {
