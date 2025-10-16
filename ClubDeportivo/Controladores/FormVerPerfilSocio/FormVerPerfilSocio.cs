@@ -15,6 +15,8 @@ namespace ClubDeportivo.Controladores.VerPerfilSocio
         {
             InitializeComponent();
             this.idSocio = idSocio;
+            dtpPerfilSocio.MaxDate = DateTime.Today;
+            dtpPerfilSocio.MinDate = new DateTime(1900, 1, 1);
         }
 
         private void frmVerPerfilSocio_Load(object sender, EventArgs e)
@@ -32,7 +34,14 @@ namespace ClubDeportivo.Controladores.VerPerfilSocio
                 txtNombrePerfilSocio.Text = socioActual.Nombre;
                 txtApellidoPerfilSocio.Text = socioActual.Apellido;
                 txtDniPerfilSocio.Text = socioActual.Dni;
-                dtpPerfilSocio.Value = socioActual.FechaNacimiento;
+
+                if (socioActual.FechaNacimiento < dtpPerfilSocio.MinDate)
+                    dtpPerfilSocio.Value = dtpPerfilSocio.MinDate;
+                else if (socioActual.FechaNacimiento > dtpPerfilSocio.MaxDate)
+                    dtpPerfilSocio.Value = dtpPerfilSocio.MaxDate;
+                else
+                    dtpPerfilSocio.Value = socioActual.FechaNacimiento;
+
                 txtUsuarioPerfilSocio.Text = socioActual.Usuario;
                 txtClaveActualPerfilSocio.Text = string.Empty;
                 txtClaveNuevaPerfilSocio.Text = string.Empty;
@@ -43,6 +52,7 @@ namespace ClubDeportivo.Controladores.VerPerfilSocio
                 this.Close();
             }
         }
+
 
         private void BloquearCampos()
         {

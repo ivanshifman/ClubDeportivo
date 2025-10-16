@@ -15,6 +15,8 @@ namespace ClubDeportivo.Controladores.VerPerfilNoSocio
         {
             InitializeComponent();
             this.idNoSocio = idNoSocio;
+            dtpPerfilNoSocio.MaxDate = DateTime.Today;
+            dtpPerfilNoSocio.MinDate = new DateTime(1900, 1, 1);
         }
 
         private void frmVerPerfilNoSocio_Load(object sender, EventArgs e)
@@ -32,7 +34,14 @@ namespace ClubDeportivo.Controladores.VerPerfilNoSocio
                 txtNombrePerfilNoSocio.Text = noSocioActual.Nombre;
                 txtApellidoPerfilNoSocio.Text = noSocioActual.Apellido;
                 txtDniPerfilNoSocio.Text = noSocioActual.Dni;
-                dtpPerfilNoSocio.Value = noSocioActual.FechaNacimiento;
+
+                if (noSocioActual.FechaNacimiento < dtpPerfilNoSocio.MinDate)
+                    dtpPerfilNoSocio.Value = dtpPerfilNoSocio.MinDate;
+                else if (noSocioActual.FechaNacimiento > dtpPerfilNoSocio.MaxDate)
+                    dtpPerfilNoSocio.Value = dtpPerfilNoSocio.MaxDate;
+                else
+                    dtpPerfilNoSocio.Value = noSocioActual.FechaNacimiento;
+
                 txtUsuarioPerfilNoSocio.Text = noSocioActual.Usuario;
                 txtClaveActualPerfilNoSocio.Text = string.Empty;
                 txtClaveNuevaPerfilNoSocio.Text = string.Empty;

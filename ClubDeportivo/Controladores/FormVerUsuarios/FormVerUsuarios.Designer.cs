@@ -44,6 +44,7 @@
             this.FechaNacimientoNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsuarioNoSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVolverUsuarios = new System.Windows.Forms.Button();
+            this.btnEliminarUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNoSocios)).BeginInit();
             this.SuspendLayout();
@@ -206,12 +207,31 @@
             this.btnVolverUsuarios.UseVisualStyleBackColor = false;
             this.btnVolverUsuarios.Click += new System.EventHandler(this.btnVolverUsuarios_Click);
             // 
+            // btnEliminarUsuario
+            // 
+            this.btnEliminarUsuario.BackColor = System.Drawing.Color.LightCoral;
+            this.btnEliminarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarUsuario.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEliminarUsuario.FlatAppearance.BorderSize = 3;
+            this.btnEliminarUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnEliminarUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnEliminarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminarUsuario.Font = new System.Drawing.Font("Arial Narrow", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnEliminarUsuario.Location = new System.Drawing.Point(546, 35);
+            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
+            this.btnEliminarUsuario.Size = new System.Drawing.Size(130, 44);
+            this.btnEliminarUsuario.TabIndex = 22;
+            this.btnEliminarUsuario.Text = "Eliminar";
+            this.btnEliminarUsuario.UseVisualStyleBackColor = false;
+            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
+            // 
             // frmVerUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(856, 532);
+            this.Controls.Add(this.btnEliminarUsuario);
             this.Controls.Add(this.btnVolverUsuarios);
             this.Controls.Add(this.dgvNoSocios);
             this.Controls.Add(this.dgvSocios);
@@ -245,5 +265,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioSocio;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioNoSocio;
         private System.Windows.Forms.Button btnVolverUsuarios;
+        private System.Windows.Forms.Button btnEliminarUsuario;
     }
 }

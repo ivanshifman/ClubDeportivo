@@ -78,5 +78,28 @@ namespace ClubDeportivo.Servicios
 
             return tabla;
         }
+
+        public void EliminarUsuarioPorUsuario(string usuario)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    string query = "DELETE FROM Persona WHERE usuario = @usuario";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@usuario", usuario);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
