@@ -40,6 +40,7 @@
             this.lblFechaAltaCompletoCarnet = new System.Windows.Forms.Label();
             this.lblFichaMedicaCompletoCarnet = new System.Windows.Forms.Label();
             this.btnVolverCarnet = new System.Windows.Forms.Button();
+            this.btnImprimirCarnet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTituloPrincipalSocio
@@ -166,12 +167,31 @@
             this.btnVolverCarnet.UseVisualStyleBackColor = false;
             this.btnVolverCarnet.Click += new System.EventHandler(this.btnVolverCarnet_Click);
             // 
+            // btnImprimirCarnet
+            // 
+            this.btnImprimirCarnet.BackColor = System.Drawing.SystemColors.Info;
+            this.btnImprimirCarnet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimirCarnet.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnImprimirCarnet.FlatAppearance.BorderSize = 3;
+            this.btnImprimirCarnet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnImprimirCarnet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnImprimirCarnet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImprimirCarnet.Font = new System.Drawing.Font("Arial Narrow", 12.2F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirCarnet.Location = new System.Drawing.Point(544, 382);
+            this.btnImprimirCarnet.Name = "btnImprimirCarnet";
+            this.btnImprimirCarnet.Size = new System.Drawing.Size(130, 44);
+            this.btnImprimirCarnet.TabIndex = 20;
+            this.btnImprimirCarnet.Text = "Imprimir";
+            this.btnImprimirCarnet.UseVisualStyleBackColor = false;
+            this.btnImprimirCarnet.Click += new System.EventHandler(this.btnImprimirCarnet_Click);
+            // 
             // frmVerCarnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(856, 450);
+            this.Controls.Add(this.btnImprimirCarnet);
             this.Controls.Add(this.btnVolverCarnet);
             this.Controls.Add(this.lblFichaMedicaCompletoCarnet);
             this.Controls.Add(this.lblFechaAltaCompletoCarnet);
@@ -206,5 +226,6 @@
         private System.Windows.Forms.Label lblFechaAltaCompletoCarnet;
         private System.Windows.Forms.Label lblFichaMedicaCompletoCarnet;
         private System.Windows.Forms.Button btnVolverCarnet;
+        private System.Windows.Forms.Button btnImprimirCarnet;
     }
 }
