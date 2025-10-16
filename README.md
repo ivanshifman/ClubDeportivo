@@ -76,6 +76,8 @@ El sistema combina **funcionalidades de autoservicio** y **gestión administrati
   - `frmVerActividades` → Visualización de todas las actividades disponibles, estado de inscripción y cupos.
   - `frmVerCarnet` → Visualización digital del carnet del socio.
   - `frmVerCuotas` → Visualización del historial de cuotas de un socio.
+  - `frmVerPerfilNoSocio` → Visualización del perfil de un no socio.
+  - `frmVerPerfilSocio` → Visualización del perfil de un socio.
   - `frmVerUsuarios` → Listado completo de socios y no socios para supervisión administrativa.
 
 
