@@ -93,4 +93,3 @@ CREATE TABLE Administrador (
     FOREIGN KEY (id_persona) REFERENCES Persona(id_persona)
         ON DELETE CASCADE
 );
-

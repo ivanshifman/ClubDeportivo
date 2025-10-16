@@ -186,6 +186,46 @@ namespace ClubDeportivo.Servicios
                 throw;
             }
         }
+
+        public void ActualizarSocio(Socio socio)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    conn.Open();
+
+                    string query = @"
+                UPDATE Persona 
+                SET nombre = @nombre,
+                    apellido = @apellido,
+                    fecha_nacimiento = @fechaNacimiento,
+                    clave = @clave
+                WHERE id_persona = @idPersona";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", socio.Nombre);
+                        cmd.Parameters.AddWithValue("@apellido", socio.Apellido);
+                        cmd.Parameters.AddWithValue("@fechaNacimiento", socio.FechaNacimiento);
+                        cmd.Parameters.AddWithValue("@clave", socio.Clave);
+                        cmd.Parameters.AddWithValue("@idPersona", socio.IdPersona);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error de base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
     }
 }
-

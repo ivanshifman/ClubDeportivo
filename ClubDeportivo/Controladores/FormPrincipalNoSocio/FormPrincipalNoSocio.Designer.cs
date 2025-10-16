@@ -32,6 +32,7 @@
             this.btnPagarActividad = new System.Windows.Forms.Button();
             this.btnCerrarNoSocio = new System.Windows.Forms.Button();
             this.btnVerActividadesDisponibles = new System.Windows.Forms.Button();
+            this.btnVerPerfilNoSocio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTituloPrincipalNoSocio
@@ -86,12 +87,27 @@
             this.btnVerActividadesDisponibles.UseVisualStyleBackColor = false;
             this.btnVerActividadesDisponibles.Click += new System.EventHandler(this.btnVerActividadesDisponibles_Click);
             // 
+            // btnVerPerfilNoSocio
+            // 
+            this.btnVerPerfilNoSocio.BackColor = System.Drawing.Color.Pink;
+            this.btnVerPerfilNoSocio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerPerfilNoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVerPerfilNoSocio.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerPerfilNoSocio.Location = new System.Drawing.Point(769, 12);
+            this.btnVerPerfilNoSocio.Name = "btnVerPerfilNoSocio";
+            this.btnVerPerfilNoSocio.Size = new System.Drawing.Size(132, 36);
+            this.btnVerPerfilNoSocio.TabIndex = 10;
+            this.btnVerPerfilNoSocio.Text = "Ver perfil";
+            this.btnVerPerfilNoSocio.UseVisualStyleBackColor = false;
+            this.btnVerPerfilNoSocio.Click += new System.EventHandler(this.btnVerPerfilNoSocio_Click);
+            // 
             // frmPrincipalNoSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(856, 450);
+            this.ClientSize = new System.Drawing.Size(913, 450);
+            this.Controls.Add(this.btnVerPerfilNoSocio);
             this.Controls.Add(this.lblTituloPrincipalNoSocio);
             this.Controls.Add(this.btnPagarActividad);
             this.Controls.Add(this.btnCerrarNoSocio);
@@ -109,5 +125,6 @@
         private System.Windows.Forms.Button btnPagarActividad;
         private System.Windows.Forms.Button btnCerrarNoSocio;
         private System.Windows.Forms.Button btnVerActividadesDisponibles;
+        private System.Windows.Forms.Button btnVerPerfilNoSocio;
     }
 }

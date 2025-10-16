@@ -245,6 +245,18 @@
     <Compile Include="Controladores\FormAgregarActividad\FormAgregarActividad.Designer.cs">
       <DependentUpon>FormAgregarActividad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controladores\FormVerPerfilNoSocio\FormVerPerfilNoSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormVerPerfilNoSocio\FormVerPerfilNoSocio.Designer.cs">
+      <DependentUpon>FormVerPerfilNoSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\FormVerPerfilSocio\FormVerPerfilSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controladores\FormVerPerfilSocio\FormVerPerfilSocio.Designer.cs">
+      <DependentUpon>FormVerPerfilSocio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Actividad.cs" />
     <Compile Include="Modelos\Administrador.cs" />
     <Compile Include="Modelos\Cuota.cs" />
@@ -390,6 +402,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controladores\FormVerUsuarios\FormVerUsuarios.resx">
       <DependentUpon>FormVerUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormVerPerfilNoSocio\FormVerPerfilNoSocio.resx">
+      <DependentUpon>FormVerPerfilNoSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controladores\FormVerPerfilSocio\FormVerPerfilSocio.resx">
+      <DependentUpon>FormVerPerfilSocio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -31,6 +31,10 @@ namespace ClubDeportivo.Controladores.FormPrincipalNoSocio
             new ClubDeportivo.Controladores.FrmLogin.frmLogin().Show();
         }
 
-
+        private void btnVerPerfilNoSocio_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.VerPerfilNoSocio.frmVerPerfilNoSocio(idNoSocio).Show();
+        }
     }
 }

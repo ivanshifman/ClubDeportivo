@@ -33,6 +33,7 @@
             this.btnPagarCuota = new System.Windows.Forms.Button();
             this.btnVerCarnet = new System.Windows.Forms.Button();
             this.lblTituloPrincipalSocio = new System.Windows.Forms.Label();
+            this.btnVerPerfilSocio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVerCuotas
@@ -101,12 +102,27 @@
             this.lblTituloPrincipalSocio.TabIndex = 4;
             this.lblTituloPrincipalSocio.Text = "Pantalla Principal - Socio";
             // 
+            // btnVerPerfilSocio
+            // 
+            this.btnVerPerfilSocio.BackColor = System.Drawing.Color.Pink;
+            this.btnVerPerfilSocio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerPerfilSocio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVerPerfilSocio.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerPerfilSocio.Location = new System.Drawing.Point(752, 12);
+            this.btnVerPerfilSocio.Name = "btnVerPerfilSocio";
+            this.btnVerPerfilSocio.Size = new System.Drawing.Size(136, 37);
+            this.btnVerPerfilSocio.TabIndex = 5;
+            this.btnVerPerfilSocio.Text = "Ver perfil";
+            this.btnVerPerfilSocio.UseVisualStyleBackColor = false;
+            this.btnVerPerfilSocio.Click += new System.EventHandler(this.btnVerPerfilSocio_Click);
+            // 
             // frmPrincipalSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(856, 450);
+            this.ClientSize = new System.Drawing.Size(900, 450);
+            this.Controls.Add(this.btnVerPerfilSocio);
             this.Controls.Add(this.lblTituloPrincipalSocio);
             this.Controls.Add(this.btnVerCarnet);
             this.Controls.Add(this.btnPagarCuota);
@@ -126,5 +142,6 @@
         private System.Windows.Forms.Button btnPagarCuota;
         private System.Windows.Forms.Button btnVerCarnet;
         private System.Windows.Forms.Label lblTituloPrincipalSocio;
+        private System.Windows.Forms.Button btnVerPerfilSocio;
     }
 }

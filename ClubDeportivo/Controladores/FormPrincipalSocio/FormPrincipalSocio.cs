@@ -43,5 +43,11 @@ namespace ClubDeportivo.Controladores.FormPrincipalSocio
             this.Close();
             new ClubDeportivo.Controladores.FormVerCuotas.frmVerCuotas(idSocio).Show();
         }
+
+        private void btnVerPerfilSocio_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new ClubDeportivo.Controladores.VerPerfilSocio.frmVerPerfilSocio(idSocio).Show();
+        }
     }
 }

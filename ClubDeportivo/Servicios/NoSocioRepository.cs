@@ -72,6 +72,95 @@ namespace ClubDeportivo.Servicios
             }
         }
 
+        public NoSocio ObtenerNoSocioPorIdNoSocio(int idNoSocio)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    conn.Open();
+                    string query = @"SELECT p.*
+                                     FROM Persona p
+                                     INNER JOIN NoSocio n ON p.id_persona = n.id_persona
+                                     WHERE n.id_noSocio = @idNoSocio";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idNoSocio", idNoSocio);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return new NoSocio(
+                                    reader.GetString("nombre"),
+                                    reader.GetString("apellido"),
+                                    reader.GetString("dni"),
+                                    reader.GetDateTime("fecha_nacimiento"),
+                                    reader.GetString("usuario"),
+                                    reader.GetString("clave")
+                                )
+                                {
+                                    IdPersona = reader.GetInt32("id_persona"),
+                                    IdNoSocio = idNoSocio
+                                };
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error de base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        public void ActualizarNoSocio(NoSocio noSocio)
+        {
+            try
+            {
+                using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+                {
+                    conn.Open();
+
+                    string query = @"
+                        UPDATE Persona 
+                        SET nombre = @nombre,
+                            apellido = @apellido,
+                            fecha_nacimiento = @fechaNacimiento,
+                            clave = @clave
+                        WHERE id_persona = @idPersona";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", noSocio.Nombre);
+                        cmd.Parameters.AddWithValue("@apellido", noSocio.Apellido);
+                        cmd.Parameters.AddWithValue("@fechaNacimiento", noSocio.FechaNacimiento);
+                        cmd.Parameters.AddWithValue("@clave", noSocio.Clave);
+                        cmd.Parameters.AddWithValue("@idPersona", noSocio.IdPersona);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error de base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
     }
 }
-
