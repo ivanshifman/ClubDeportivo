@@ -88,21 +88,31 @@ namespace ClubDeportivo.Servicios
                 {
                     conn.Open();
 
-                    string query = @"SELECT a.capacidad - COUNT(p.id_pagoActividad) AS cuposDisponibles
-                                     FROM Actividad a
-                                     LEFT JOIN PagoActividad p ON a.id_actividad = p.id_actividad
-                                     WHERE a.id_actividad = @id
-                                     GROUP BY a.capacidad";
+                    string query = @"
+                SELECT 
+                    (a.capacidad - COUNT(p.id_pagoActividad)) AS cuposDisponibles,
+                    a.horario
+                FROM Actividad a
+                LEFT JOIN PagoActividad p ON a.id_actividad = p.id_actividad
+                WHERE a.id_actividad = @id
+                GROUP BY a.capacidad, a.horario";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", idActividad);
-                        var result = cmd.ExecuteScalar();
-
-                        if (result != null && result != DBNull.Value)
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            int cuposDisponibles = Convert.ToInt32(result);
-                            return cuposDisponibles > 0;
+                            if (reader.Read())
+                            {
+                                int cuposDisponibles = Convert.ToInt32(reader["cuposDisponibles"]);
+                                DateTime horario = Convert.ToDateTime(reader["horario"]);
+
+                                // Verificar si ya venció o no hay cupos
+                                if (horario < DateTime.Now)
+                                    return false; // ya pasó la fecha
+
+                                return cuposDisponibles > 0;
+                            }
                         }
                     }
                 }

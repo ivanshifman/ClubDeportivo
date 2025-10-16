@@ -36,7 +36,7 @@ namespace ClubDeportivo.Controladores.FormVerActividades
                 }
                 else
                 {
-                    estado = "Sin cupos";
+                    estado = act.Horario < DateTime.Now ? "Vencida" : "Sin cupos";
                 }
 
                 dgvActividades.Rows.Add(
