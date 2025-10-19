@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ClubDeportivo.Interfaces.Modelos;
+using System;
 
 namespace ClubDeportivo.Modelos
 {
-    public class Administrador : Persona
+    public class Administrador : Persona, IAdministrador
     {
         private int idAdmin;
 

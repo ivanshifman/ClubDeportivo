@@ -247,6 +247,7 @@
             this.txtApellidoPerfilNoSocio.Name = "txtApellidoPerfilNoSocio";
             this.txtApellidoPerfilNoSocio.Size = new System.Drawing.Size(307, 30);
             this.txtApellidoPerfilNoSocio.TabIndex = 35;
+            this.txtApellidoPerfilNoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPerfilNoSocio_KeyPress);
             // 
             // txtNombrePerfilNoSocio
             // 
@@ -258,6 +259,7 @@
             this.txtNombrePerfilNoSocio.Name = "txtNombrePerfilNoSocio";
             this.txtNombrePerfilNoSocio.Size = new System.Drawing.Size(307, 30);
             this.txtNombrePerfilNoSocio.TabIndex = 34;
+            this.txtNombrePerfilNoSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombrePerfilNoSocio_KeyPress);
             // 
             // frmVerPerfilNoSocio
             // 

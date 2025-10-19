@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo.Database;
+using ClubDeportivo.Interfaces;
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
-    public class PersonaRepository
+    public class PersonaRepository : IPersonaRepository
     {
         public (int idPersona, string rol)? Ingresar(string usuario, string clave)
         {

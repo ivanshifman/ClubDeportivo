@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo.Database;
+using ClubDeportivo.Interfaces.Repositorios;
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
-    public class PagoActividadRepository
+    public class PagoActividadRepository : IPagoActividadRepository
     {
         public int RegistrarPago(PagoActividad pago)
         {
@@ -88,4 +89,3 @@ namespace ClubDeportivo.Servicios
 
     }
 }
-

@@ -177,5 +177,3 @@ namespace ClubDeportivo.Controladores.FormLogin
 
     }
 }
-
-

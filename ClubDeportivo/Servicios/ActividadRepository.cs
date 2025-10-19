@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo.Database;
+using ClubDeportivo.Interfaces.Repositorios;
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
-    public class ActividadRepository
+    public class ActividadRepository : IActividadRepository
     {
         public List<Actividad> ObtenerTodasActividades()
         {

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ClubDeportivo.Interfaces.Modelos;
+using System;
 
 namespace ClubDeportivo.Modelos
 {
-    public class NoSocio : Persona
+    public class NoSocio : Persona, INoSocio
     {
         private int idNoSocio;
         public int IdNoSocio

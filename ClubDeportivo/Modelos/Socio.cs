@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ClubDeportivo.Interfaces.Modelos;
+using System;
 
 namespace ClubDeportivo.Modelos
 {
-    public class Socio : Persona
+    public class Socio : Persona, ISocio
     {
         private int idSocio;
         private DateTime fechaAlta;

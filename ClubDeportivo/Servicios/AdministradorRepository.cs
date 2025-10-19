@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo.Database;
+using ClubDeportivo.Interfaces;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
-    public class AdministradorRepository
+    public class AdministradorRepository : IAdministradorRepository
     {
         public DataTable ObtenerSocios()
         {

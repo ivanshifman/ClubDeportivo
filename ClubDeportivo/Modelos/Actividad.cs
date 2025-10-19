@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ClubDeportivo.Interfaces.Modelos;
+using System;
 
 namespace ClubDeportivo.Modelos
 {
-    public class Actividad
+    public class Actividad : IActividad
     {
         private int idActividad;
         private string nombre;

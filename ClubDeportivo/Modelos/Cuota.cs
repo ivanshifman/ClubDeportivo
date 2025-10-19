@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ClubDeportivo.Interfaces.Modelos;
+using System;
 
 namespace ClubDeportivo.Modelos
 {
-    public class Cuota
+    public class Cuota : ICuota
     {
         private int idCuota;
         private int idSocio;

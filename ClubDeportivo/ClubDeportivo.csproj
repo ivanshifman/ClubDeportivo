@@ -260,6 +260,20 @@
     <Compile Include="Controladores\FormVerPerfilSocio\FormVerPerfilSocio.Designer.cs">
       <DependentUpon>FormVerPerfilSocio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Modelos\IActividad.cs" />
+    <Compile Include="Interfaces\Modelos\IAdministrador.cs" />
+    <Compile Include="Interfaces\Modelos\ICuota.cs" />
+    <Compile Include="Interfaces\Modelos\INoSocio.cs" />
+    <Compile Include="Interfaces\Modelos\IPagoActividad.cs" />
+    <Compile Include="Interfaces\Modelos\IPersona.cs" />
+    <Compile Include="Interfaces\Modelos\ISocio.cs" />
+    <Compile Include="Interfaces\Servicios\IActividadRepository.cs" />
+    <Compile Include="Interfaces\Servicios\IAdministradorRepository.cs" />
+    <Compile Include="Interfaces\Servicios\ICuotaRepository.cs" />
+    <Compile Include="Interfaces\Servicios\INoSocioRepository.cs" />
+    <Compile Include="Interfaces\Servicios\IPagoActividadRepository.cs" />
+    <Compile Include="Interfaces\Servicios\IPersonaRepository.cs" />
+    <Compile Include="Interfaces\Servicios\ISocioRepository.cs" />
     <Compile Include="Modelos\Actividad.cs" />
     <Compile Include="Modelos\Administrador.cs" />
     <Compile Include="Modelos\Cuota.cs" />

@@ -32,8 +32,8 @@ INSERT INTO Administrador (id_persona) VALUES
 -- Insertar Cuotas
 -- ======================
 INSERT INTO Cuota (id_socio, monto, fechaPago, fechaVencimiento, medioPago, promocion) VALUES
-(1, 2000.00, '2025-09-01', '2025-09-30', 'Efectivo', '0'),
-(2, 2000.00, '2025-10-01', '2025-10-31', 'Tarjeta', '3');
+(1, 2000.00, '2025-09-01', '2025-10-01', 'Efectivo', '0'),
+(2, 2000.00, '2025-10-01', '2025-11-01', 'Tarjeta', '3');
 
 -- ======================
 -- Insertar Actividades

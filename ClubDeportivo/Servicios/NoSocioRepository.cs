@@ -1,4 +1,5 @@
 ﻿using ClubDeportivo.Database;
+using ClubDeportivo.Interfaces;
 using ClubDeportivo.Modelos;
 using MySql.Data.MySqlClient;
 using System;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo.Servicios
 {
-    public class NoSocioRepository : PersonaRepository
+    public class NoSocioRepository : PersonaRepository, INoSocioRepository
     {
         public int Registrar(NoSocio noSocio)
         {

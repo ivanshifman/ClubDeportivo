@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ClubDeportivo.Interfaces.Modelos;
+using System;
 using System.Text.RegularExpressions;
 
 namespace ClubDeportivo.Modelos
 {
-    public abstract class Persona
+    public abstract class Persona : IPersona
     {
         private int idPersona;
         private string nombre;

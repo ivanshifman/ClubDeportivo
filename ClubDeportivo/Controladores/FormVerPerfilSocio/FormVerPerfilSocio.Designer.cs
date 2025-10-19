@@ -209,6 +209,7 @@
             this.txtApellidoPerfilSocio.Name = "txtApellidoPerfilSocio";
             this.txtApellidoPerfilSocio.Size = new System.Drawing.Size(307, 30);
             this.txtApellidoPerfilSocio.TabIndex = 17;
+            this.txtApellidoPerfilSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPerfilSocio_KeyPress);
             // 
             // txtNombrePerfilSocio
             // 
@@ -220,6 +221,7 @@
             this.txtNombrePerfilSocio.Name = "txtNombrePerfilSocio";
             this.txtNombrePerfilSocio.Size = new System.Drawing.Size(307, 30);
             this.txtNombrePerfilSocio.TabIndex = 16;
+            this.txtNombrePerfilSocio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombrePerfilSocio_KeyPress);
             // 
             // txtClaveNuevaPerfilSocio
             // 
