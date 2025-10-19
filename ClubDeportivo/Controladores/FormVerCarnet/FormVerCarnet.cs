@@ -1,9 +1,8 @@
 ﻿using ClubDeportivo.Modelos;
 using ClubDeportivo.Servicios;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
 using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ClubDeportivo.Controladores.FormVerCarnet
@@ -52,10 +51,10 @@ namespace ClubDeportivo.Controladores.FormVerCarnet
         private void btnImprimirCarnet_Click(object sender, EventArgs e)
         {
             var confirmacion = MessageBox.Show(
-        "¿Desea generar el carnet en formato PDF?",
-        "Confirmar impresión",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question);
+                "¿Desea generar el carnet en formato PDF?",
+                "Confirmar impresión",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
             {
@@ -82,40 +81,65 @@ namespace ClubDeportivo.Controladores.FormVerCarnet
 
         private void GenerarPDFCarnet(string rutaArchivo)
         {
-            Document doc = new Document(PageSize.A7.Rotate(), 10, 10, 10, 10);
-            PdfWriter.GetInstance(doc, new FileStream(rutaArchivo, FileMode.Create));
-            doc.Open();
+            var socio = new
+            {
+                Nombre = lblNombreCompletoCarnet.Text,
+                Dni = lblDniCompletoCarnet.Text,
+                FechaNacimiento = lblFechaNacimientoCompletoCarnet.Text,
+                FechaAlta = lblFechaAltaCompletoCarnet.Text,
+                FichaMedica = lblFichaMedicaCompletoCarnet.Text
+            };
 
-            var titulo = new Paragraph("CLUB DEPORTIVO", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD));
-            titulo.Alignment = Element.ALIGN_CENTER;
-            doc.Add(titulo);
+            var document = Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Size(PageSizes.A7.Landscape());
+                    page.Margin(15);
+                    page.DefaultTextStyle(x => x.FontSize(10));
 
-            doc.Add(new Paragraph(" "));
+                    page.Content().Column(column =>
+                    {
+                        column.Spacing(8);
 
-            var tabla = new PdfPTable(2);
-            tabla.WidthPercentage = 100;
+                        column.Item().AlignCenter().Text("CLUB DEPORTIVO")
+                            .FontSize(14)
+                            .Bold()
+                            .FontColor(Colors.Blue.Medium);
 
-            tabla.AddCell("Nombre:");
-            tabla.AddCell(lblNombreCompletoCarnet.Text);
+                        column.Item().LineHorizontal(0.5f).LineColor(Colors.Grey.Medium);
 
-            tabla.AddCell("DNI:");
-            tabla.AddCell(lblDniCompletoCarnet.Text);
+                        column.Item().Table(table =>
+                        {
+                            table.ColumnsDefinition(columns =>
+                            {
+                                columns.ConstantColumn(90);
+                                columns.RelativeColumn();
+                            });
 
-            tabla.AddCell("Fecha de Nacimiento:");
-            tabla.AddCell(lblFechaNacimientoCompletoCarnet.Text);
+                            void AddRow(string etiqueta, string valor)
+                            {
+                                table.Cell().Text(etiqueta).Bold();
+                                table.Cell().Text(valor);
+                            }
 
-            tabla.AddCell("Fecha de Alta:");
-            tabla.AddCell(lblFechaAltaCompletoCarnet.Text);
+                            AddRow("Nombre:", socio.Nombre);
+                            AddRow("DNI:", socio.Dni);
+                            AddRow("Fecha Nacimiento:", socio.FechaNacimiento);
+                            AddRow("Fecha Alta:", socio.FechaAlta);
+                            AddRow("Ficha Médica:", socio.FichaMedica);
+                        });
 
-            tabla.AddCell("Ficha Médica:");
-            tabla.AddCell(lblFichaMedicaCompletoCarnet.Text);
+                        column.Item().Text(" ");
 
-            doc.Add(tabla);
+                        column.Item().AlignRight().Text($"Emitido el: {DateTime.Now:dd/MM/yyyy HH:mm}")
+                            .FontSize(8)
+                            .FontColor(Colors.Grey.Darken2);
+                    });
+                });
+            });
 
-            doc.Add(new Paragraph(" "));
-            doc.Add(new Paragraph("Emitido el: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm")));
-
-            doc.Close();
+            document.GeneratePdf(rutaArchivo);
         }
     }
 }

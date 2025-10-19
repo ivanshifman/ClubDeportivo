@@ -1,5 +1,6 @@
 ﻿using ClubDeportivo.Controladores.FormLogin;
 using DotNetEnv;
+using QuestPDF.Infrastructure;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace ClubDeportivo
             {
                 Env.Load(envPath);
             }
+
+            QuestPDF.Settings.License = LicenseType.Community;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
