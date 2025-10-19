@@ -38,6 +38,24 @@ El sistema combina **funcionalidades de autoservicio** y **gestión administrati
 
 ## 🧩 Estructura del Proyecto
 
+- **Interfaces:** Carpeta que contiene las definiciones de contratos (interfaces) para modelos y servicios, ayudando a mantener consistencia y flexibilidad en la arquitectura.
+  - **Modelos:** Contiene interfaces para las entidades principales, definiendo las propiedades que cada modelo debe implementar.
+    - `IPersona`  
+    - `ISocio`  
+    - `INoSocio`  
+    - `IActividad`  
+    - `IPagoActividad`  
+    - `ICuota`  
+    - `IAdministrador`  
+  - **Servicios:** Contiene interfaces para los repositorios y servicios, definiendo los métodos que deben implementar.
+    - `IPersonaRepository`  
+    - `ISocioRepository`  
+    - `INoSocioRepository`  
+    - `IActividadRepository`  
+    - `IPagoActividadRepository`  
+    - `ICuotaRepository`  
+    - `IAdministradorRepository`
+
 - **Modelos:** Definen las entidades principales del sistema:
   - `Persona`  
   - `Socio`  
