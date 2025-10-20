@@ -108,9 +108,8 @@ namespace ClubDeportivo.Servicios
                                 int cuposDisponibles = Convert.ToInt32(reader["cuposDisponibles"]);
                                 DateTime horario = Convert.ToDateTime(reader["horario"]);
 
-                                // Verificar si ya venció o no hay cupos
                                 if (horario < DateTime.Now)
-                                    return false; // ya pasó la fecha
+                                    return false;
 
                                 return cuposDisponibles > 0;
                             }
@@ -148,7 +147,7 @@ namespace ClubDeportivo.Servicios
                         cmd.Parameters.AddWithValue("@idActividad", idActividad);
 
                         var result = Convert.ToInt32(cmd.ExecuteScalar());
-                        return result > 0; // Si hay al menos un registro, ya está inscripto
+                        return result > 0;
                     }
                 }
             }
@@ -163,7 +162,6 @@ namespace ClubDeportivo.Servicios
 
             return false;
         }
-
 
         public bool AgregarActividad(Actividad actividad)
         {

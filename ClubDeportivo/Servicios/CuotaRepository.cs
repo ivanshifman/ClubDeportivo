@@ -106,7 +106,6 @@ namespace ClubDeportivo.Servicios
             }
         }
 
-
         public bool TieneCuotaVigente(int idSocio)
         {
             try
@@ -140,7 +139,6 @@ namespace ClubDeportivo.Servicios
                 return false;
             }
         }
-
 
         public DataTable ObtenerCuotasPorSocio(int idSocio)
         {
@@ -179,7 +177,6 @@ namespace ClubDeportivo.Servicios
 
             return tabla;
         }
-
 
         public Cuota ObtenerUltimaCuota(int idSocio)
         {

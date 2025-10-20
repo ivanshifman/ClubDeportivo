@@ -53,7 +53,6 @@ namespace ClubDeportivo.Servicios
             }
         }
 
-
         public bool YaPagoActividad(int idNoSocio, int idActividad)
         {
             try
