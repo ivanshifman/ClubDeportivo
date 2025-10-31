@@ -93,8 +93,7 @@ namespace ClubDeportivo.Servicios
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
+                throw new Exception(ex.Message);
             }
         }
     }
