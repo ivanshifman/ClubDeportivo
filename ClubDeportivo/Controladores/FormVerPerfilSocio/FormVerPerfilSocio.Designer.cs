@@ -96,9 +96,9 @@
             this.lblClaveActualPerfilSocio.Location = new System.Drawing.Point(33, 371);
             this.lblClaveActualPerfilSocio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClaveActualPerfilSocio.Name = "lblClaveActualPerfilSocio";
-            this.lblClaveActualPerfilSocio.Size = new System.Drawing.Size(67, 27);
+            this.lblClaveActualPerfilSocio.Size = new System.Drawing.Size(126, 27);
             this.lblClaveActualPerfilSocio.TabIndex = 27;
-            this.lblClaveActualPerfilSocio.Text = "Clave:";
+            this.lblClaveActualPerfilSocio.Text = "Clave actual:";
             // 
             // lblUsuarioPerfilSocio
             // 
@@ -242,9 +242,9 @@
             this.lblClaveNuevaPerfilSocio.Location = new System.Drawing.Point(33, 424);
             this.lblClaveNuevaPerfilSocio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClaveNuevaPerfilSocio.Name = "lblClaveNuevaPerfilSocio";
-            this.lblClaveNuevaPerfilSocio.Size = new System.Drawing.Size(67, 27);
+            this.lblClaveNuevaPerfilSocio.Size = new System.Drawing.Size(126, 27);
             this.lblClaveNuevaPerfilSocio.TabIndex = 32;
-            this.lblClaveNuevaPerfilSocio.Text = "Clave:";
+            this.lblClaveNuevaPerfilSocio.Text = "Clave nueva:";
             // 
             // btnEditarPerfilSocio
             // 
