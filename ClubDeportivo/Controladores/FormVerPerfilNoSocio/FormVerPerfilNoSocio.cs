@@ -106,19 +106,24 @@ namespace ClubDeportivo.Controladores.FormVerPerfilNoSocio
             {
                 if (!string.IsNullOrWhiteSpace(txtClaveActualPerfilNoSocio.Text) || !string.IsNullOrWhiteSpace(txtClaveNuevaPerfilNoSocio.Text))
                 {
-                    if (txtClaveActualPerfilNoSocio.Text != noSocioActual.Clave)
+                    if (!string.IsNullOrWhiteSpace(txtClaveActualPerfilNoSocio.Text) || !string.IsNullOrWhiteSpace(txtClaveNuevaPerfilNoSocio.Text))
                     {
-                        MessageBox.Show("La clave actual es incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (!BCrypt.Net.BCrypt.Verify(txtClaveActualPerfilNoSocio.Text, noSocioActual.Clave))
+                        {
+                            MessageBox.Show("La clave actual es incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (string.IsNullOrWhiteSpace(txtClaveNuevaPerfilNoSocio.Text))
+                        {
+                            MessageBox.Show("Debe ingresar una nueva clave.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Hashear la nueva clave antes de guardar
+                        noSocioActual.Clave = BCrypt.Net.BCrypt.HashPassword(txtClaveNuevaPerfilNoSocio.Text);
                     }
 
-                    if (string.IsNullOrWhiteSpace(txtClaveNuevaPerfilNoSocio.Text))
-                    {
-                        MessageBox.Show("Debe ingresar una nueva clave.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    noSocioActual.Clave = txtClaveNuevaPerfilNoSocio.Text;
                 }
 
                 noSocioActual.Nombre = txtNombrePerfilNoSocio.Text;

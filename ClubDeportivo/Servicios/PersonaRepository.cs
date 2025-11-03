@@ -19,7 +19,6 @@ namespace ClubDeportivo.Servicios
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.Add("Usu", MySqlDbType.VarChar).Value = usuario;
-                    comando.Parameters.Add("Pass", MySqlDbType.VarChar).Value = clave;
 
                     sqlCon.Open();
                     using (var reader = comando.ExecuteReader())
@@ -28,12 +27,26 @@ namespace ClubDeportivo.Servicios
                         {
                             int id = reader.GetInt32("id_persona");
                             string rol = reader.GetString("rol");
-                            return (id, rol);
+                            string hashAlmacenado = reader.GetString("clave");
+
+                            if (hashAlmacenado.Length < 60)
+                            {
+                                string nuevoHash = BCrypt.Net.BCrypt.HashPassword(hashAlmacenado);
+                                ActualizarHash(id, nuevoHash);
+                                hashAlmacenado = nuevoHash;
+                            }
+
+                            if (BCrypt.Net.BCrypt.Verify(clave, hashAlmacenado))
+                            {
+                                return (id, rol);
+                            }
+                            else
+                            {
+                                return null;
+                            }
                         }
-                        else
-                        {
-                            return null;
-                        }
+
+                        return null;
                     }
                 }
                 catch (MySqlException ex)
@@ -48,6 +61,21 @@ namespace ClubDeportivo.Servicios
                 }
             }
         }
+        private void ActualizarHash(int idPersona, string nuevoHash)
+        {
+            using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
+            {
+                conn.Open();
+                string query = "UPDATE Persona SET clave = @clave WHERE id_persona = @idPersona";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@clave", nuevoHash);
+                    cmd.Parameters.AddWithValue("@idPersona", idPersona);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
         public int Registrar(Persona persona)
         {
@@ -58,7 +86,7 @@ namespace ClubDeportivo.Servicios
                     conn.Open();
 
                     string checkQuery = @"SELECT COUNT(*) FROM Persona 
-                          WHERE usuario = @usuario OR dni = @dni";
+                      WHERE usuario = @usuario OR dni = @dni";
                     using (var checkCmd = new MySqlCommand(checkQuery, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@usuario", persona.Usuario);
@@ -69,9 +97,9 @@ namespace ClubDeportivo.Servicios
                             throw new Exception("Ya existe un usuario o DNI registrado con esos datos.");
                     }
 
-                    string query = @"INSERT INTO Persona (nombre, apellido, dni, fecha_nacimiento, usuario, clave)
-                             VALUES (@nombre, @apellido, @dni, @fechaNacimiento, @usuario, @clave);
-                             SELECT LAST_INSERT_ID();";
+                    string query = @"INSERT INTO Persona (nombre, apellido, dni, fecha_nacimiento, usuario, clave)  
+                         VALUES (@nombre, @apellido, @dni, @fechaNacimiento, @usuario, @clave);
+                         SELECT LAST_INSERT_ID();";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
@@ -80,7 +108,9 @@ namespace ClubDeportivo.Servicios
                         cmd.Parameters.AddWithValue("@dni", persona.Dni);
                         cmd.Parameters.AddWithValue("@fechaNacimiento", persona.FechaNacimiento);
                         cmd.Parameters.AddWithValue("@usuario", persona.Usuario);
-                        cmd.Parameters.AddWithValue("@clave", persona.Clave);
+
+                        string hashClave = BCrypt.Net.BCrypt.HashPassword(persona.Clave);
+                        cmd.Parameters.AddWithValue("@clave", hashClave);
 
                         return Convert.ToInt32(cmd.ExecuteScalar());
                     }
@@ -96,5 +126,6 @@ namespace ClubDeportivo.Servicios
                 throw new Exception(ex.Message);
             }
         }
+
     }
 }

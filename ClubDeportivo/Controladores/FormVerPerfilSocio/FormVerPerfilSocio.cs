@@ -107,7 +107,7 @@ namespace ClubDeportivo.Controladores.FormVerPerfilSocio
             {
                 if (!string.IsNullOrWhiteSpace(txtClaveActualPerfilSocio.Text) || !string.IsNullOrWhiteSpace(txtClaveNuevaPerfilSocio.Text))
                 {
-                    if (txtClaveActualPerfilSocio.Text != socioActual.Clave)
+                    if (!BCrypt.Net.BCrypt.Verify(txtClaveActualPerfilSocio.Text, socioActual.Clave))
                     {
                         MessageBox.Show("La clave actual es incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -119,7 +119,7 @@ namespace ClubDeportivo.Controladores.FormVerPerfilSocio
                         return;
                     }
 
-                    socioActual.Clave = txtClaveNuevaPerfilSocio.Text;
+                    socioActual.Clave = BCrypt.Net.BCrypt.HashPassword(txtClaveNuevaPerfilSocio.Text);
                 }
 
                 socioActual.Nombre = txtNombrePerfilSocio.Text;
