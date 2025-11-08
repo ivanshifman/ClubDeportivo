@@ -39,6 +39,7 @@
             this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuotasVencidas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,8 @@
             this.FechaVencimiento,
             this.Monto,
             this.MedioPago,
-            this.Promocion});
+            this.Promocion,
+            this.Pagado});
             this.dgvCuotasVencidas.Location = new System.Drawing.Point(29, 150);
             this.dgvCuotasVencidas.Name = "dgvCuotasVencidas";
             this.dgvCuotasVencidas.ReadOnly = true;
@@ -93,6 +95,13 @@
             this.btnVolverListadoCuotasVencidas.Text = "Volver";
             this.btnVolverListadoCuotasVencidas.UseVisualStyleBackColor = false;
             this.btnVolverListadoCuotasVencidas.Click += new System.EventHandler(this.btnVolverListadoCuotasVencidas_Click);
+            // 
+            // Pagado
+            // 
+            this.Pagado.HeaderText = "Pagado";
+            this.Pagado.MinimumWidth = 6;
+            this.Pagado.Name = "Pagado";
+            this.Pagado.ReadOnly = true;
             // 
             // Promocion
             // 
@@ -182,5 +191,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn MedioPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Promocion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pagado;
     }
 }

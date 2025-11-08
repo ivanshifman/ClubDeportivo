@@ -32,6 +32,7 @@ namespace ClubDeportivo.Controladores.FormListadoCuotasVencidas
             dgvCuotasVencidas.Columns["Monto"].DataPropertyName = "monto";
             dgvCuotasVencidas.Columns["MedioPago"].DataPropertyName = "medioPago";
             dgvCuotasVencidas.Columns["Promocion"].DataPropertyName = "promocion";
+            dgvCuotasVencidas.Columns["Pagado"].DataPropertyName = "pagado";
         }
 
         private void btnVolverListadoCuotasVencidas_Click(object sender, EventArgs e)

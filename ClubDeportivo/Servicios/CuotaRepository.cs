@@ -239,13 +239,28 @@ namespace ClubDeportivo.Servicios
                 using (var conn = ConexionDB.GetInstancia().CrearConexionMySQL())
                 {
                     string query = @"
-                SELECT p.nombre, p.apellido, p.dni,
-                       c.fechaPago, c.fechaVencimiento, c.monto,
-                       c.medioPago, c.promocion
-                FROM Cuota c
-                INNER JOIN Socio s ON c.id_socio = s.id_socio
-                INNER JOIN Persona p ON s.id_persona = p.id_persona
-                WHERE c.fechaVencimiento < CURDATE()";
+                        SELECT 
+                            p.nombre, 
+                            p.apellido, 
+                            p.dni,
+                            c.fechaPago, 
+                            c.fechaVencimiento, 
+                            c.monto,
+                            c.medioPago, 
+                            c.promocion,
+                            CASE 
+                                WHEN EXISTS (
+                                    SELECT 1 
+                                    FROM Cuota c2
+                                    WHERE c2.id_socio = c.id_socio
+                                    AND c2.fechaVencimiento >= CURDATE()
+                                ) THEN 'Sí'
+                                ELSE 'No'
+                            END AS pagado
+                        FROM Cuota c
+                        INNER JOIN Socio s ON c.id_socio = s.id_socio
+                        INNER JOIN Persona p ON s.id_persona = p.id_persona
+                        WHERE c.fechaVencimiento < CURDATE();";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
